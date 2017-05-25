@@ -1,5 +1,6 @@
 package com.framgia.service;
 
+import java.text.ParseException;
 import java.util.List;
 
 import com.framgia.bean.UserInfo;
@@ -13,7 +14,9 @@ public interface UserService extends BaseService {
 
 	public boolean editUSer(UserInfo userInfo);
 
-	public boolean addUser(UserInfo userInfo);
+	public void addUser(UserInfo userInfo) throws ParseException;
 
 	public boolean deleteuser(UserInfo userInfo);
+	
+	public boolean isUserExist(UserInfo user);
 }

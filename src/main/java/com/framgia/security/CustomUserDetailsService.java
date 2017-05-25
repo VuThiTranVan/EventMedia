@@ -30,7 +30,7 @@ public class CustomUserDetailsService implements UserDetailsService {
 		logger.info("Get infot user for security");
 		CustomUserDetail user;
 		user = userService.findByUserName(username);
-		return new CustomUserDetail(user.getUsername(), user.getPassword(), user.getAuthorities());
+		return new CustomUserDetail(user.getUserId(), user.getUsername(), user.getPassword(), user.getAuthorities());
 
 	}
 

@@ -17,7 +17,7 @@ public class UserInfo {
 	private String birthday;
 	private String phone;
 	private String email;
-	private String joinStatus;
+	private String statusJoin;
 	private GroupInfo group;
 	private PermissionInfo permission;
 	private ImageInfo image;
@@ -45,7 +45,7 @@ public class UserInfo {
 		this.birthday = birthday;
 		this.phone = phone;
 		this.email = email;
-		this.joinStatus = joinStatus;
+		this.statusJoin = joinStatus;
 		this.group = group;
 		this.permission = permission;
 		this.image = image;
@@ -122,12 +122,12 @@ public class UserInfo {
 		this.email = email;
 	}
 
-	public String getJoinStatus() {
-		return joinStatus;
+	public String getStatusJoin() {
+		return statusJoin;
 	}
 
-	public void setJoinStatus(String joinStatus) {
-		this.joinStatus = joinStatus;
+	public void setStatusJoin(String statusJoin) {
+		this.statusJoin = statusJoin;
 	}
 
 	public GroupInfo getGroup() {

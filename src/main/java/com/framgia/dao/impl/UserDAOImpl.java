@@ -29,4 +29,11 @@ public class UserDAOImpl extends AbstractDAO<Integer, User> implements UserDAO {
 		user = (User) crit.uniqueResult();
 		return user;
 	}
+
+	@Override
+	public void create(User user) {
+		logger.info("UserDAO _ createUser");
+		saveOrUpdate(user);
+		
+	}
 }

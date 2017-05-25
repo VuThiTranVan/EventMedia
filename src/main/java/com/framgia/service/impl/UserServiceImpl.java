@@ -1,5 +1,6 @@
 package com.framgia.service.impl;
 
+import java.text.ParseException;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
@@ -11,6 +12,9 @@ import com.framgia.bean.UserInfo;
 import com.framgia.model.User;
 import com.framgia.security.CustomUserDetail;
 import com.framgia.service.UserService;
+import com.framgia.util.Constants;
+import com.framgia.util.ConvetBeanAndModel;
+import com.framgia.util.DateUtil;
 
 /**
  * 
@@ -40,12 +44,6 @@ public class UserServiceImpl extends BaseServiceImpl implements UserService {
 	}
 
 	@Override
-	public boolean addUser(UserInfo userInfo) {
-		// TODO Auto-generated method stub
-		return false;
-	}
-
-	@Override
 	public boolean deleteuser(UserInfo userInfo) {
 		// TODO Auto-generated method stub
 		return false;
@@ -53,8 +51,8 @@ public class UserServiceImpl extends BaseServiceImpl implements UserService {
 
 	@Override
 	public CustomUserDetail findByUserName(String username) {
-		
-		User user =  getUserDAO().findByUserName(username);
+
+		User user = getUserDAO().findByUserName(username);
 		if (user != null) {
 			Collection<GrantedAuthority> authList = new ArrayList<GrantedAuthority>();
 			CustomUserDetail customUser = new CustomUserDetail();
@@ -64,11 +62,29 @@ public class UserServiceImpl extends BaseServiceImpl implements UserService {
 				authList.add(new SimpleGrantedAuthority(user.getPermission().getName()));
 				customUser.setAuthorities(authList);
 			}
-			
-			
+
 			return customUser;
 		}
 		return null;
+	}
+
+	@Override
+	public void addUser(UserInfo userInfo) throws ParseException {
+		userInfo.setUserCreate(userInfo.getUsername());
+		userInfo.setUserUpdate(userInfo.getUsername());
+		userInfo.setDateCreate(DateUtil.getDateNow());
+		userInfo.setDateUpdate(DateUtil.getDateNow());
+		userInfo.setDeleteFlag(Constants.DEL_FLG);
+		User user = ConvetBeanAndModel.converUserBeanToModel(userInfo);
+		getUserDAO().create(user);
+	}
+
+	@Override
+	public boolean isUserExist(UserInfo userInfo) {
+		User user = getUserDAO().findByUserName(userInfo.getUsername());
+		if (user != null)
+			return true;
+		return false;
 	}
 
 }

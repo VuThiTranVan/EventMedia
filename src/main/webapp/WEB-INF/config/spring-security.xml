@@ -9,16 +9,16 @@
 	<http auto-config="true" use-expressions="true">
 
 		<intercept-url pattern="/login" access="permitAll" />
-		<intercept-url pattern="/admin**" access="hasRole('ADMIN')" />
-		<intercept-url pattern="/admin/**" access="hasRole('ADMIN')" />
+		<intercept-url pattern="/admin**" access="hasRole('ROLE_ADMIN')" />
+		<intercept-url pattern="/admin/**" access="hasRole('ROLE_ADMIN')" />
 		<intercept-url pattern="/manager**"
-			access="hasRole('MANAGER') or hasRole('ADMIN')" />
+			access="hasRole('ROLE_MANAGER') or hasRole('ADMIN')" />
 		<intercept-url pattern="/manager/**"
-			access="hasRole('MANAGER') or hasRole('ADMIN')" />
+			access="hasRole('ROLE_MANAGER') or hasRole('ROLE_ADMIN')" />
 		<intercept-url pattern="/user**"
-			access="hasRole('USER') or hasRole('MANAGER') or hasRole('ADMIN')" />
+			access="hasRole('ROLE_USER') or hasRole('ROLE_MANAGER') or hasRole('ROLE_ADMIN')" />
 		<intercept-url pattern="/user/**"
-			access="hasRole('USER') or hasRole('MANAGER') or hasRole('ADMIN')" />
+			access="hasRole('ROLE_USER') or hasRole('ROLE_MANAGER') or hasRole('ROLE_ADMIN')" />
 		<intercept-url pattern="/guest**" access="hasRole('permitAll')" />
 
 		<!-- access denied page -->

@@ -23,13 +23,13 @@
 		<property name="dateUpdate" column="DATEUPDATE" />
 
 		<list name="image" cascade="all" lazy="true" fetch="select">
-			<key column="id" not-null="true" />
+			<key column="id" not-null="false" />
 			<list-index column="idx" />
 			<one-to-many class="Image" />
 		</list>
 
 		<list name="user" cascade="all" lazy="true" fetch="select">
-			<key column="id" not-null="true" />
+			<key column="id" not-null="false" />
 			<list-index column="idx" />
 			<one-to-many class="User" />
 		</list>

@@ -7,37 +7,39 @@ import org.springframework.security.core.SpringSecurityCoreVersion;
 import org.springframework.security.core.userdetails.User;
 import org.springframework.security.core.userdetails.UserDetails;
 
+import com.framgia.security.CustomUserDetail;
+
 public class CustomUserDetail implements UserDetails {
 
-    private static final long serialVersionUID = SpringSecurityCoreVersion.SERIAL_VERSION_UID;
-    public static final int ZERO_NUMBER = 0;
-//    private String userId;
-    private String password;
-    private String username;
-    private Collection<GrantedAuthority> authorities;
+	private static final long serialVersionUID = SpringSecurityCoreVersion.SERIAL_VERSION_UID;
+	public static final int ZERO_NUMBER = 0;
+	private String userId;
+	private String password;
+	private String username;
+	private Collection<GrantedAuthority> authorities;
 
-    public CustomUserDetail(){
-    	super();
-    }
-    
-    public CustomUserDetail(String username, String password,Collection<GrantedAuthority> authorities) {
+	public CustomUserDetail() {
+		super();
+	}
 
-        if (((username == null) || "".equals(username)) || (password == null)) {
-            throw new IllegalArgumentException("Cannot pass null or empty values to constructor");
-        }
-//        this.userId = userId;	
-        this.username = username;
-        this.password = password;
-        this.authorities = authorities;
-    }
+	public CustomUserDetail(String userId, String username, String password, Collection<GrantedAuthority> authorities) {
 
-//    public String getUserId() {
-//		return userId;
-//	}
-//
-//	public void setUserId(String userId) {
-//		this.userId = userId;
-//	}
+		if (((username == null) || "".equals(username)) || (password == null)) {
+			throw new IllegalArgumentException("Cannot pass null or empty values to constructor");
+		}
+		this.userId = userId;
+		this.username = username;
+		this.password = password;
+		this.authorities = authorities;
+	}
+
+	public String getUserId() {
+		return userId;
+	}
+
+	public void setUserId(String userId) {
+		this.userId = userId;
+	}
 
 	public void setPassword(String password) {
 		this.password = password;
@@ -48,51 +50,52 @@ public class CustomUserDetail implements UserDetails {
 	}
 
 	public Collection<GrantedAuthority> getAuthorities() {
-        return authorities;
-    }
+		return authorities;
+	}
 
-    public String getPassword() {
-        return password;
-    }
+	public String getPassword() {
+		return password;
+	}
 
-    public String getUsername() {
-        return username;
-    }
+	public String getUsername() {
+		return username;
+	}
 
-    public boolean isEnabled() {
-        return true;
-    }
+	public boolean isEnabled() {
+		return true;
+	}
 
-    public boolean isAccountNonExpired() {
-        return true;
-    }
+	public boolean isAccountNonExpired() {
+		return true;
+	}
 
-    public boolean isAccountNonLocked() {
-        return true;
-    }
+	public boolean isAccountNonLocked() {
+		return true;
+	}
 
-    public boolean isCredentialsNonExpired() {
-        return true;
-    }
+	public boolean isCredentialsNonExpired() {
+		return true;
+	}
 
-    public void eraseCredentials() {
-        password = null;
-    }
-    
-    public void setAuthorities(Collection<GrantedAuthority> authorities) {
+	public void eraseCredentials() {
+		password = null;
+	}
+
+	public void setAuthorities(Collection<GrantedAuthority> authorities) {
 		this.authorities = authorities;
 	}
 
-    @Override
-    public boolean equals(Object obj) {
-        if (obj instanceof User) {
-            return username.equals(((CustomUserDetail) obj).username);
-        }
-        return false;
-    }
+	@Override
+	public boolean equals(Object obj) {
+		if (obj instanceof User) {
+			return username.equals(((CustomUserDetail) obj).username);
+		}
+		return false;
+	}
 
-    @Override
-    public int hashCode() {
-        return username.hashCode();
-    }
+	@Override
+	public int hashCode() {
+		return username.hashCode();
+	}
+
 }
