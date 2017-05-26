@@ -7,7 +7,7 @@
 
 	<class name="Vote" table="VOTE">
 		<id name="id" column="ID" type="java.lang.Integer">
-			<generator class="identity" />
+			<generator class="increment" />
 		</id>
 
 		<many-to-one name="image" class="Image" fetch="select"

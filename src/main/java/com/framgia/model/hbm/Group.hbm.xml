@@ -7,7 +7,7 @@
 
 	<class name="Group" table="GROUP">
 		<id name="id" column="ID" type="java.lang.Integer">
-			<generator class="identity" />
+			<generator class="increment" />
 		</id>
 		<property name="name" column="NAME" />
 		<property name="description" column="DESCRIPTION" />
@@ -22,13 +22,13 @@
 		<property name="userUpdate" column="USERUPDATE" />
 		<property name="dateUpdate" column="DATEUPDATE" />
 
-		<list name="image" cascade="all" lazy="true" fetch="select">
+		<list name="image" cascade="all" lazy="false" fetch="select">
 			<key column="id" not-null="true" />
 			<list-index column="idx" />
 			<one-to-many class="Image" />
 		</list>
 
-		<list name="user" cascade="all" lazy="true" fetch="select">
+		<list name="user" cascade="all" lazy="false" fetch="select">
 			<key column="id" not-null="true" />
 			<list-index column="idx" />
 			<one-to-many class="User" />

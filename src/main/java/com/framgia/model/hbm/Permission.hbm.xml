@@ -5,7 +5,7 @@
 <hibernate-mapping package="com.framgia.model">
 	<class name="Permission" table="Permission">
 		<id name="id" column="ID">
-			<generator class="identity" />
+			<generator class="increment" />
 		</id>
 		<property name="name" column="NAME" />
 		<property name="description" column="DESCRIPTION" />

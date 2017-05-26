@@ -8,6 +8,7 @@ import org.springframework.context.MessageSource;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.framgia.dao.impl.UserDAOImpl;
@@ -18,7 +19,7 @@ import com.framgia.dao.impl.UserDAOImpl;
  * @author vu.thi.tran.van@framgia.com
  * 
  */
-@Controller
+@RestController
 public class LoginController {
 
 	private static final Logger logger = Logger.getLogger(UserDAOImpl.class);

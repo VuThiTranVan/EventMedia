@@ -7,7 +7,7 @@
 
 	<class name="Image" table="IMAGE">
 		<id name="id" column="ID" type="java.lang.Integer">
-			<generator class="identity" />
+			<generator class="increment" />
 		</id>
 		<property name="url" column="URL" />
 		<property name="description" column="DESCRIPTION" />

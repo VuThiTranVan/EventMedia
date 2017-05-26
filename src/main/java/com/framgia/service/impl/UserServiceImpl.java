@@ -1,7 +1,6 @@
 package com.framgia.service.impl;
 
 import java.util.ArrayList;
-import java.util.Collection;
 import java.util.List;
 
 import org.springframework.security.core.GrantedAuthority;
@@ -53,10 +52,10 @@ public class UserServiceImpl extends BaseServiceImpl implements UserService {
 
 	@Override
 	public CustomUserDetail findByUserName(String username) {
-		
-		User user =  getUserDAO().findByUserName(username);
+
+		User user = getUserDAO().findByUserName(username);
 		if (user != null) {
-			Collection<GrantedAuthority> authList = new ArrayList<GrantedAuthority>();
+			List<GrantedAuthority> authList = new ArrayList<GrantedAuthority>();
 			CustomUserDetail customUser = new CustomUserDetail();
 			customUser.setUsername(user.getUsername());
 			customUser.setPassword(user.getPassword());
@@ -64,8 +63,7 @@ public class UserServiceImpl extends BaseServiceImpl implements UserService {
 				authList.add(new SimpleGrantedAuthority(user.getPermission().getName()));
 				customUser.setAuthorities(authList);
 			}
-			
-			
+
 			return customUser;
 		}
 		return null;
