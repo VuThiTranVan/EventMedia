@@ -16,15 +16,13 @@ public class BaseServiceImpl implements BaseService {
 	protected UserDAO userDAO;
 	protected PermissionDAO permissionDAO;
 	protected GroupDAO groupDAO;
-	
-	
-	
-	public GroupDAO getGroupDAO() {
-		return groupDAO;
+
+	public UserDAO getUserDAO() {
+		return userDAO;
 	}
 
-	public void setGroupDAO(GroupDAO groupDAO) {
-		this.groupDAO = groupDAO;
+	public void setUserDAO(UserDAO userDAO) {
+		this.userDAO = userDAO;
 	}
 
 	public PermissionDAO getPermissionDAO() {
@@ -35,13 +33,12 @@ public class BaseServiceImpl implements BaseService {
 		this.permissionDAO = permissionDAO;
 	}
 
-	public UserDAO getUserDAO() {
-		return userDAO;
+	public GroupDAO getGroupDAO() {
+		return groupDAO;
 	}
 
-	public void setUserDAO(UserDAO userDAO) {
-		this.userDAO = userDAO;
+	public void setGroupDAO(GroupDAO groupDAO) {
+		this.groupDAO = groupDAO;
 	}
-
 
 }

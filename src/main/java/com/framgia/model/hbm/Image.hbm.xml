@@ -20,8 +20,8 @@
 
 		<list name="vote" cascade="all" lazy="true" fetch="select"
 			inverse="true">
-			<key column="id" not-null="true" />
-			<list-index column="idx" />
+			<key column="idImage" not-null="true" />
+			<list-index column="id" />
 			<one-to-many class="Vote" />
 		</list>
 

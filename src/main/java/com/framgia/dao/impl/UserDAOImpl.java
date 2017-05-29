@@ -41,6 +41,12 @@ public class UserDAOImpl extends AbstractDAO<Integer, User> implements UserDAO {
 		saveOrUpdate(user);
 	}
 
+	@Override
+	public void update(User user) {
+		logger.info("UserDAO _ updateUser");
+		saveOrUpdate(user);
+	}
+
 	@SuppressWarnings("unchecked")
 	@Override
 	public List<User> findByConditon(ConditionUserBean conditionUserBean) {

@@ -31,7 +31,11 @@ public class UserInfo {
 		super();
 	}
 
-	
+	public UserInfo(Integer id, String password) {
+		super();
+		this.id = id;
+		this.password = password;
+	}
 
 	public UserInfo(Integer id, String username, String password, String name, String gender, String birthday,
 	        String phone, String email, String joinStatus, Integer idGroup, PermissionInfo permission, ImageInfo image,
@@ -55,8 +59,6 @@ public class UserInfo {
 		this.userUpdate = userUpdate;
 		this.dateUpdate = dateUpdate;
 	}
-
-
 
 	public Integer getId() {
 		return id;

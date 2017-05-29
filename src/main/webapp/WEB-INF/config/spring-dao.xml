@@ -9,13 +9,13 @@
 			<ref bean="sessionFactory" />
 		</property>
 	</bean>
-	
+
 	<bean id="PermissionDAO" class="com.framgia.dao.impl.PermissionDAOImpl">
 		<property name="sessionFactory">
 			<ref bean="sessionFactory" />
 		</property>
 	</bean>
-	
+
 	<bean id="GroupDAO" class="com.framgia.dao.impl.GroupDAOImpl">
 		<property name="sessionFactory">
 			<ref bean="sessionFactory" />

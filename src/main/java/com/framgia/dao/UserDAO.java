@@ -9,9 +9,11 @@ public interface UserDAO {
 
 	public User findByUserName(String username);
 
-	void create(User user);
-	
+	public void create(User user);
+
 	public List<User> findByConditon(ConditionUserBean conditionUserBean);
 
 	public User findById(Integer id, boolean isLock);
+
+	public void update(User user);
 }

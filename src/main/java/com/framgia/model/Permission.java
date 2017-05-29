@@ -24,6 +24,11 @@ public class Permission implements Serializable {
 		super();
 	}
 
+	public Permission(Integer id) {
+		super();
+		this.id = id;
+	}
+
 	public Permission(Integer id, String name, String description, String deleteFlag, String userCreate,
 	        Date dateCreate, String userUpdate, Date dateUpdate) {
 		super();

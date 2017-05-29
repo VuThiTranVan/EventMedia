@@ -10,24 +10,18 @@ import com.framgia.dao.GroupDAO;
 import com.framgia.model.Group;
 import com.framgia.util.Constants;
 
-/**
- * 
- * @version 22/05/2017
- * @author phan.van.hieu@framgia.com
- * 
- */
 public class GroupDAOImpl extends AbstractDAO<Integer, Group> implements GroupDAO {
 
 	private static final Logger logger = Logger.getLogger(GroupDAOImpl.class);
 
 	@SuppressWarnings("deprecation")
 	@Override
-	public Group findById(Integer idUser, boolean isLock) {
+	public Group findById(Integer id, boolean isLock) {
 		logger.info("Search user to update");
 		Criteria crit = getSession().createCriteria(Group.class);
 		crit.add(Restrictions.eq("deleteFlag", Constants.DEL_FLG));
 
-		crit.add(Restrictions.eq("id", idUser));
+		crit.add(Restrictions.eq("id", id));
 
 		if (isLock) {
 			crit.setLockMode(LockMode.UPGRADE);
@@ -41,4 +35,12 @@ public class GroupDAOImpl extends AbstractDAO<Integer, Group> implements GroupDA
 		logger.info("Update Group");
 		saveOrUpdate(group);
 	}
+
+	@Override
+	public Group create(Group group) {
+		logger.info("Create Group");
+		saveOrUpdate(group);
+		return group;
+	}
+
 }

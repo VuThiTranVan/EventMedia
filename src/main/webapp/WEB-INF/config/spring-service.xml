@@ -14,6 +14,15 @@
 		</property>
 	</bean>
 
+	<bean id="GroupService" parent="transactionProxyTemplate">
+		<property name="target">
+			<bean class="com.framgia.service.impl.GroupServiceImpl">
+				<property name="groupDAO" ref="GroupDAO"></property>
+				<property name="userDAO" ref="UserDAO"></property>
+			</bean>
+		</property>
+	</bean>
+
 	<bean id="ManageUserService" parent="transactionProxyTemplate">
 		<property name="target">
 			<bean class="com.framgia.service.impl.ManageUserServiceImpl">

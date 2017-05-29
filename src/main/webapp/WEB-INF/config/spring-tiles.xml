@@ -85,7 +85,8 @@
 			<add-attribute value="/assets/js/calendar/jquery-ui.css" />
 		</put-list-attribute>
 	</definition>
-	
+
+	<!-- Admin - init page -->
 	<definition name="homepageadmin" extends="base.definition">
 		<put-attribute name="title" value="Home Page Admin!" />
 		<put-attribute name="screenname" value="Home Page Admin" />
@@ -101,7 +102,8 @@
 			<add-attribute value="/assets/js/jquery.validate.min.js" />
 		</put-list-attribute>
 	</definition>
-	
+
+	<!-- Admin - init management user -->
 	<definition name="manageuser" extends="base.definition">
 		<put-attribute name="title" value="Manager User" />
 		<put-attribute name="screenname" value="Manager User" />
@@ -122,13 +124,13 @@
 			<add-attribute value="/assets/js/jquery.dataTables.min.js" />
 			<add-attribute value="/assets/js/jquery.validate.min.js" />
 		</put-list-attribute>
-		
 		<put-list-attribute name="jsAdd">
 			<add-attribute value="/assets/js/calendar/jquery-ui.js" />
 			<add-attribute value="/assets/js/customize-Admin/manageUser.js" />
 		</put-list-attribute>
 	</definition>
-	
+
+	<!-- Admin - detail user -->
 	<definition name="manageusedretail" extends="base.definition">
 		<put-attribute name="title" value="Detail User" />
 		<put-attribute name="screenname" value="Detail User" />
@@ -142,6 +144,30 @@
 			<add-attribute value="/assets/js/jquery.min.js" />
 			<add-attribute value="/assets/js/bootstrap.min.js" />
 			<add-attribute value="/assets/js/jquery.validate.min.js" />
+		</put-list-attribute>
+	</definition>
+
+	<!-- Register group -->
+	<definition name="registerGroup" extends="base.definition">
+		<put-attribute name="title" value="Register group" />
+		<put-attribute name="screenname" value="REGISTER GROUP" />
+		<put-attribute name="body" value="/view/userPage/registerGroup.jsp" />
+		<put-list-attribute name="cssDefault">
+			<add-attribute value="/assets/css/bootstrap.min.css" />
+			<add-attribute value="/assets/css/style.css" />
+		</put-list-attribute>
+		<put-list-attribute name="jsDefault">
+			<add-attribute value="/assets/js/jquery.min.js" />
+			<add-attribute value="/assets/js/bootstrap.min.js" />
+			<add-attribute value="/assets/js/bootstrap-datepicker.js" />
+			<add-attribute value="/assets/js/jquery.validate.min.js" />
+		</put-list-attribute>
+		<put-list-attribute name="jsAdd">
+			<add-attribute value="/assets/js/calendar/jquery-ui.js" />
+			<add-attribute value="/assets/js/user/groupJs.js" />
+		</put-list-attribute>
+		<put-list-attribute name="cssAdd">
+			<add-attribute value="/assets/js/calendar/jquery-ui.css" />
 		</put-list-attribute>
 	</definition>
 </tiles-definitions>

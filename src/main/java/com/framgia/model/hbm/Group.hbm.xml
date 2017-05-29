@@ -27,14 +27,14 @@
 		<list name="image" cascade="all" lazy="true" fetch="select"
 			inverse="true">
 			<key column="idGroup" not-null="true" />
-			<list-index column="idx" />
+			<list-index column="id" />
 			<one-to-many class="Image" />
 		</list>
 
 		<list name="user" cascade="all" lazy="true" fetch="select"
 			inverse="true">
-			<key column="id" not-null="true" />
-			<list-index column="idx" />
+			<key column="idGroup" not-null="true" />
+			<list-index column="id" />
 			<one-to-many class="User" />
 		</list>
 	</class>
