@@ -19,7 +19,7 @@ public class GroupDAOImpl extends AbstractDAO<Integer, Group> implements GroupDA
 	@SuppressWarnings("deprecation")
 	@Override
 	public Group findById(Integer id, boolean isLock) {
-		logger.info("Search user to update");
+		logger.info("Search group to update");
 		Criteria crit = getSession().createCriteria(Group.class);
 		crit.add(Restrictions.eq("deleteFlag", Constants.DEL_FLG));
 

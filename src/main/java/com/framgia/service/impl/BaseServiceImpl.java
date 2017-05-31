@@ -1,6 +1,7 @@
 package com.framgia.service.impl;
 
 import com.framgia.dao.GroupDAO;
+import com.framgia.dao.ImageDAO;
 import com.framgia.dao.PermissionDAO;
 import com.framgia.dao.UserDAO;
 import com.framgia.service.BaseService;;
@@ -16,6 +17,7 @@ public class BaseServiceImpl implements BaseService {
 	protected UserDAO userDAO;
 	protected PermissionDAO permissionDAO;
 	protected GroupDAO groupDAO;
+	protected ImageDAO imageDAO;
 
 	public UserDAO getUserDAO() {
 		return userDAO;
@@ -39,6 +41,14 @@ public class BaseServiceImpl implements BaseService {
 
 	public void setGroupDAO(GroupDAO groupDAO) {
 		this.groupDAO = groupDAO;
+	}
+
+	public ImageDAO getImageDAO() {
+		return imageDAO;
+	}
+
+	public void setImageDAO(ImageDAO imageDAO) {
+		this.imageDAO = imageDAO;
 	}
 
 }

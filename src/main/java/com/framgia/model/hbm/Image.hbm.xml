@@ -13,8 +13,7 @@
 		<property name="description" column="DESCRIPTION" />
 		<property name="title" column="TITLE" />
 
-		<many-to-one name="group" class="Group" fetch="select"
-			cascade="all">
+		<many-to-one name="group" class="Group" fetch="select">
 			<column name="idGroup" not-null="true" />
 		</many-to-one>
 

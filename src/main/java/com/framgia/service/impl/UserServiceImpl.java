@@ -1,6 +1,5 @@
 package com.framgia.service.impl;
 
-import java.text.ParseException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -52,12 +51,6 @@ public class UserServiceImpl extends BaseServiceImpl implements UserService {
 	}
 
 	@Override
-	public boolean deleteuser(UserInfo userInfo) {
-		// TODO Auto-generated method stub
-		return false;
-	}
-
-	@Override
 	public CustomUserDetail findByUserName(String username) {
 		try {
 			User user = getUserDAO().findByUserName(username);
@@ -81,7 +74,7 @@ public class UserServiceImpl extends BaseServiceImpl implements UserService {
 	}
 
 	@Override
-	public boolean addUser(UserInfo userInfo) throws ParseException {
+	public boolean addUser(UserInfo userInfo) {
 		try {
 			if (StringUtils.isBlank(Helpers.getUsername())) {
 
@@ -119,13 +112,56 @@ public class UserServiceImpl extends BaseServiceImpl implements UserService {
 	}
 
 	@Override
-	public boolean updatetUser(UserInfo userInfo) throws ParseException {
+	public boolean updatetUser(UserInfo userInfo) {
 		try {
 			User user = ConvetBeanAndModel.convertUserBeanToModel(userInfo);
 			getUserDAO().update(user);
 			return true;
 		} catch (Exception e) {
 			logger.error("update user", e);
+		}
+		return false;
+	}
+
+	@Override
+	public boolean removeUser(Integer id, Integer idGroup) {
+
+		try {
+			User user = getUserDAO().findById(id, true);
+			if (!user.getIdGroup().equals(idGroup))
+				return false;
+
+			// update
+			user.setIdGroup(null);
+			user.setStatusJoin(Constants.STATUSJOIN_CODE_FREE);
+			user.setDateUpdate(DateUtil.getDateNow());
+			user.setUserUpdate(Helpers.getUsername());
+
+			getUserDAO().update(user);
+			return true;
+		} catch (Exception e) {
+			logger.error("remove user", e);
+		}
+		return false;
+	}
+	
+	@Override
+	public boolean acceptUserJoinGroup(Integer id, Integer idGroup) {
+
+		try {
+			User user = getUserDAO().findById(id, true);
+			if (!user.getIdGroup().equals(idGroup))
+				return false;
+
+			// update
+			user.setStatusJoin(Constants.STATUSJOIN_CODE_APPOVE);
+			user.setDateUpdate(DateUtil.getDateNow());
+			user.setUserUpdate(Helpers.getUsername());
+
+			getUserDAO().update(user);
+			return true;
+		} catch (Exception e) {
+			logger.error("remove user", e);
 		}
 		return false;
 	}

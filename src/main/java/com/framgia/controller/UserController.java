@@ -73,8 +73,7 @@ public class UserController {
 	}
 
 	@RequestMapping(value = "/register/isExitUsername", method = RequestMethod.GET)
-	public ResponseEntity<Void> isExitUsername(@RequestParam String username, UriComponentsBuilder ucBuilder)
-	        throws Exception {
+	public ResponseEntity<Void> isExitUsername(@RequestParam String username, UriComponentsBuilder ucBuilder) {
 		UserInfo user = new UserInfo();
 		user.setUsername(username);
 		if (userService.isUserExist(user)) {
@@ -100,8 +99,7 @@ public class UserController {
 	}
 
 	@RequestMapping(value = "/user/registerGroup", method = RequestMethod.POST)
-	public ResponseEntity<Void> registerGroup(@ModelAttribute("group") GroupInfo group)
-	        throws Exception {
+	public ResponseEntity<Void> registerGroup(@ModelAttribute("group") GroupInfo group) {
 		boolean create = groupService.createGroup(group);
 		if (!create)
 			return new ResponseEntity<Void>(HttpStatus.CONFLICT);

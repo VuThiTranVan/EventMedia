@@ -3,6 +3,7 @@ package com.framgia.service;
 import java.io.Serializable;
 
 import com.framgia.dao.GroupDAO;
+import com.framgia.dao.ImageDAO;
 import com.framgia.dao.PermissionDAO;
 import com.framgia.dao.UserDAO;
 
@@ -17,4 +18,5 @@ public interface BaseService extends Serializable {
 	UserDAO getUserDAO();
 	PermissionDAO getPermissionDAO();
 	GroupDAO getGroupDAO();
+	ImageDAO getImageDAO();
 }

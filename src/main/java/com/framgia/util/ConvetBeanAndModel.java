@@ -61,14 +61,23 @@ public class ConvetBeanAndModel {
 			userInfo.setPassword(user.getPassword());
 			userInfo.setName(user.getName());
 			userInfo.setGender(Constants.GENDER_VALUE_MALE);
+
 			if (Constants.GENDER_CODE_FMALE.equals(user.getGender())) {
 				userInfo.setGender(Constants.GENDER_VALUE_FMALE);
 			}
-			userInfo.setGender(user.getGender());
+
 			userInfo.setBirthday(user.getBirthday());
 			userInfo.setPhone(user.getPhone());
 			userInfo.setEmail(user.getEmail());
-			userInfo.setStatusJoin(user.getStatusJoin());
+			userInfo.setStatusJoin(Constants.STATUSJOIN_VALUE_FREE);
+
+			if (user.getStatusJoin().equals(Constants.STATUSJOIN_CODE_APPOVE))
+				userInfo.setStatusJoin(Constants.STATUSJOIN_VALUE_APPOVE);
+
+			if (user.getStatusJoin().equals(Constants.STATUSJOIN_CODE_REQUEST)) {
+				userInfo.setStatusJoin(Constants.STATUSJOIN_VALUE_REQUEST);
+			}
+
 			userInfo.setIdGroup(user.getIdGroup());
 			userInfo.setDeleteFlag(user.getDeleteFlag());
 			userInfo.setDateCreate(user.getDateCreate());
@@ -115,10 +124,15 @@ public class ConvetBeanAndModel {
 			if (group.getImage() != null) {
 				List<ImageInfo> listImageInfo = new ArrayList<ImageInfo>();
 				for (Image item : group.getImage()) {
-					if (item != null) {
-						ImageInfo imageInfo = convertImageModelToBean(item);
-						listImageInfo.add(imageInfo);
-					}
+					if (item == null)
+						continue;
+
+					if (item.getDeleteFlag().equals(Constants.DEL_FLG_DEL))
+						continue;
+
+					ImageInfo imageInfo = convertImageModelToBean(item);
+					listImageInfo.add(imageInfo);
+
 				}
 				groupInfo.setImage(listImageInfo);
 			}
@@ -127,10 +141,17 @@ public class ConvetBeanAndModel {
 			if (group.getUser() != null) {
 				List<UserInfo> listUserInfo = new ArrayList<UserInfo>();
 				for (User item : group.getUser()) {
-					if (item != null) {
-						UserInfo userInfo = convertUserModelToBean(item);
-						listUserInfo.add(userInfo);
-					}
+					if (item == null)
+						continue;
+
+					if (item.getPermission().getId().equals(Constants.PERMISSION_CODE_MANAGER))
+						continue;
+
+					if (item.getDeleteFlag().equals(Constants.DEL_FLG_DEL))
+						continue;
+
+					UserInfo userInfo = convertUserModelToBean(item);
+					listUserInfo.add(userInfo);
 				}
 				groupInfo.setUser(listUserInfo);
 			}
@@ -162,10 +183,15 @@ public class ConvetBeanAndModel {
 			if (groupInfo.getImage() != null) {
 				List<Image> listImage = new ArrayList<Image>();
 				for (ImageInfo item : groupInfo.getImage()) {
-					if (item != null) {
-						Image image = convertImageBeanToModel(item);
-						listImage.add(image);
-					}
+					if (item == null)
+						continue;
+
+					if (item.getDeleteFlag().equals(Constants.DEL_FLG_DEL))
+						continue;
+
+					Image image = convertImageBeanToModel(item);
+					listImage.add(image);
+
 				}
 				group.setImage(listImage);
 			}
@@ -174,10 +200,15 @@ public class ConvetBeanAndModel {
 			if (groupInfo.getUser() != null) {
 				List<User> listUser = new ArrayList<User>();
 				for (UserInfo item : groupInfo.getUser()) {
-					if (item != null) {
-						User user = convertUserBeanToModel(item);
-						listUser.add(user);
-					}
+					if (item == null)
+						continue;
+
+					if (item.getDeleteFlag().equals(Constants.DEL_FLG_DEL))
+						continue;
+
+					User user = convertUserBeanToModel(item);
+					listUser.add(user);
+
 				}
 				group.setUser(listUser);
 			}
@@ -203,15 +234,20 @@ public class ConvetBeanAndModel {
 			if (image.getVote() != null) {
 				List<VoteInfo> listVoteInfo = new ArrayList<VoteInfo>();
 				for (Vote item : image.getVote()) {
-					if (item != null) {
-						VoteInfo voteInfo = new VoteInfo();
-						UserInfo userInfo = new UserInfo();
-						userInfo.setId(item.getUser().getId());
-						userInfo.setUsername(item.getUser().getUsername());
-						userInfo.setIdGroup(item.getUser().getIdGroup());
-						voteInfo.setUser(userInfo);
-						listVoteInfo.add(voteInfo);
-					}
+					if (item == null)
+						continue;
+
+					if (item.getDeleteFlag().equals(Constants.DEL_FLG_DEL))
+						continue;
+
+					VoteInfo voteInfo = new VoteInfo();
+					UserInfo userInfo = new UserInfo();
+					userInfo.setId(item.getUser().getId());
+					userInfo.setUsername(item.getUser().getUsername());
+					userInfo.setIdGroup(item.getUser().getIdGroup());
+					voteInfo.setUser(userInfo);
+					listVoteInfo.add(voteInfo);
+
 				}
 				imageInfo.setVotes(listVoteInfo);
 			}
@@ -237,15 +273,20 @@ public class ConvetBeanAndModel {
 			if (imageInfo.getVotes() != null) {
 				List<Vote> listVote = new ArrayList<Vote>();
 				for (VoteInfo item : imageInfo.getVotes()) {
-					if (item != null) {
-						Vote vote = new Vote();
-						User user = new User();
-						user.setId(item.getUser().getId());
-						user.setUsername(item.getUser().getUsername());
-						user.setIdGroup(item.getUser().getIdGroup());
-						vote.setUser(user);
-						listVote.add(vote);
-					}
+					if (item == null)
+						continue;
+
+					if (item.getDeleteFlag().equals(Constants.DEL_FLG_DEL))
+						continue;
+
+					Vote vote = new Vote();
+					User user = new User();
+					user.setId(item.getUser().getId());
+					user.setUsername(item.getUser().getUsername());
+					user.setIdGroup(item.getUser().getIdGroup());
+					vote.setUser(user);
+					listVote.add(vote);
+
 				}
 				image.setVote(listVote);
 			}

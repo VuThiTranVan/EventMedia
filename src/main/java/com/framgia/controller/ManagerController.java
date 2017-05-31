@@ -10,14 +10,19 @@ import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.WebDataBinder;
 import org.springframework.web.bind.annotation.InitBinder;
+import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.ModelAndView;
+import org.springframework.web.servlet.view.RedirectView;
 
 import com.framgia.bean.GroupInfo;
 import com.framgia.bean.UserInfo;
 import com.framgia.service.GroupService;
+import com.framgia.service.ImageService;
 import com.framgia.service.UserService;
 import com.framgia.util.Constants;
 import com.framgia.util.DateUtil;
@@ -39,6 +44,9 @@ public class ManagerController {
 
 	@Autowired
 	UserService userService;
+
+	@Autowired
+	ImageService imageService;
 
 	@InitBinder
 	public void initBinder(WebDataBinder webDataBinder) {
@@ -76,5 +84,48 @@ public class ManagerController {
 		}
 
 		return new ResponseEntity<GroupInfo>(group, HttpStatus.OK);
+	}
+
+	@RequestMapping(value = "/manager/", method = RequestMethod.POST)
+	public ResponseEntity<Void> updateGroup(@ModelAttribute("group") GroupInfo group) {
+
+		if (groupService.updateGroup(group)) {
+			return new ResponseEntity<Void>(HttpStatus.OK);
+		}
+
+		return new ResponseEntity<Void>(HttpStatus.NO_CONTENT);
+	}
+
+	@RequestMapping(value = "/manager/{id}", method = RequestMethod.GET)
+	public RedirectView deleteLogicGroup(@PathVariable("id") int id) {
+
+		if (groupService.deleteLogicGroup(id)) {
+			return new RedirectView("/EventMedia/logout");
+		}
+		return new RedirectView("error");
+	}
+
+	@RequestMapping(value = "/manager/image/{id}", method = RequestMethod.GET)
+	@ResponseBody
+	public boolean removeImage(@PathVariable("id") int id) {
+		return imageService.removeImageInGroup(id);
+	}
+
+	@RequestMapping(value = "/manager/user/remove/{idGroup}/{id}", method = RequestMethod.GET)
+	@ResponseBody
+	public boolean removeUser(@PathVariable("idGroup") int idGroup, @PathVariable("id") int id) {
+		return userService.removeUser(id, idGroup);
+	}
+	
+	@RequestMapping(value = "/manager/user/reject/{idGroup}/{id}", method = RequestMethod.GET)
+	@ResponseBody
+	public boolean rejectUserJoinGroup(@PathVariable("idGroup") int idGroup, @PathVariable("id") int id) {
+		return userService.removeUser(id, idGroup);
+	}
+	
+	@RequestMapping(value = "/manager/user/accept/{idGroup}/{id}", method = RequestMethod.GET)
+	@ResponseBody
+	public boolean racceptUserJoinGroup(@PathVariable("idGroup") int idGroup, @PathVariable("id") int id) {
+		return userService.acceptUserJoinGroup(id, idGroup);
 	}
 }

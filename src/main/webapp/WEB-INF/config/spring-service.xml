@@ -32,4 +32,13 @@
 			</bean>
 		</property>
 	</bean>
+
+	<bean id="ImageService" parent="transactionProxyTemplate">
+		<property name="target">
+			<bean class="com.framgia.service.impl.ImageServiceImpl">
+				<property name="imageDAO" ref="ImageDAO"></property>
+			</bean>
+		</property>
+	</bean>
+
 </beans>
