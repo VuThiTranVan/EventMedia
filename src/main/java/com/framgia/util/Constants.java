@@ -50,6 +50,9 @@ public interface Constants {
 	public static String NOT_DELETE = "Not Delete";
 	public static Integer DEFAULT_VALUE_0 = 0;
 	public static Integer DEFAULT_VALUE_1 = 1;
+	
+	public static int NUMBER_PAGE_LIMIT = 12;
+	public static int NUMBER_PAGE_DEFAULT = 1;
 
 	// Cloudinary cloud_name, API_Key and API_Secret
 	public static String CLOUDINARY_CLOUD_NAME = "framgia-project2";

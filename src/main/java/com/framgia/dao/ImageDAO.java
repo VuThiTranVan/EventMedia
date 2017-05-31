@@ -1,5 +1,7 @@
 package com.framgia.dao;
 
+import java.util.List;
+
 import com.framgia.model.Image;
 
 public interface ImageDAO {
@@ -12,4 +14,7 @@ public interface ImageDAO {
 
 	Long findByUserCreate(String username);
 
+	public List<Image> getListImage(String condition, int first, int max);
+
+	public Integer getNoOfRecord(String condition);
 }

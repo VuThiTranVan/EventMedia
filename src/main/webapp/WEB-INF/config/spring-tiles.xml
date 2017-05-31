@@ -248,6 +248,38 @@
 		</put-list-attribute>
 	</definition>
 
+	<!-- Init group -->
+	<definition name="homeImage" extends="base.definition">
+		<put-attribute name="title" value="Home" />
+		<put-attribute name="screenname" value="HOME" />
+		<put-attribute name="body" value="/view/userPage/home.jsp" />
+		<put-list-attribute name="cssDefault">
+			<add-attribute value="/assets/css/bootstrap.min.css" />
+			<add-attribute value="/assets/css/dataTables.bootstrap.min.css" />
+			<add-attribute value="/assets/css/style.css" />
+			<add-attribute value="/assets/js/dataTables.bootstrap.min.css" />
+			<add-attribute value="/assets/js/jquery.dataTables.min.css" />
+			<add-attribute value="/assets/css/bootstrap.modallery.min.css" />
+		</put-list-attribute>
+		<put-list-attribute name="jsDefault">
+			<add-attribute value="/assets/js/jquery.min.js" />
+			<add-attribute value="/assets/js/bootstrap.min.js" />
+			<add-attribute value="/assets/js/bootstrap-datepicker.js" />
+			<add-attribute value="/assets/js/init.js" />
+			<add-attribute value="/assets/js/bootstrap.min.js" />
+			<add-attribute value="/assets/js/jquery.dataTables.min.js" />
+			<add-attribute value="/assets/js/jquery.validate.min.js" />
+		</put-list-attribute>
+		<put-list-attribute name="jsAdd">
+			<add-attribute value="/assets/js/calendar/jquery-ui.js" />
+			<add-attribute value="/assets/js/manager/bootstrap.modallery.min.js" />
+			<add-attribute value="/assets/js/user/imageJs.js" />
+		</put-list-attribute>
+		<put-list-attribute name="cssAdd">
+			<add-attribute value="/assets/js/calendar/jquery-ui.css" />
+		</put-list-attribute>
+	</definition>
+
 	<!-- Chat socket -->
 	<definition name="chat" extends="base.definition">
 		<put-attribute name="title" value="Chat" />
