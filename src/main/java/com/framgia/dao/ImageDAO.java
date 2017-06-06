@@ -10,4 +10,6 @@ public interface ImageDAO {
 
 	public Image getImageByUserCreate(String username, Integer idGroup);
 
+	Long findByUserCreate(String username);
+
 }

@@ -3,6 +3,7 @@ package com.framgia.dao.impl;
 import org.apache.log4j.Logger;
 import org.hibernate.Criteria;
 import org.hibernate.LockMode;
+import org.hibernate.criterion.Projections;
 import org.hibernate.criterion.Restrictions;
 
 import com.framgia.dao.AbstractDAO;
@@ -14,6 +15,7 @@ public class ImageDAOImpl extends AbstractDAO<Integer, Image> implements ImageDA
 
 	private static final Logger logger = Logger.getLogger(ImageDAOImpl.class);
 
+	@SuppressWarnings("deprecation")
 	@Override
 	public Image findById(Integer id, boolean isLock) {
 		logger.info("Search group to update");
@@ -45,6 +47,17 @@ public class ImageDAOImpl extends AbstractDAO<Integer, Image> implements ImageDA
 		crit.add(Restrictions.eq("group.id", idGroup));
 
 		return (Image) crit.uniqueResult();
+}
+
+	public Long findByUserCreate(String username) {
+		logger.info("Search group to update");
+		Criteria crit = getSession().createCriteria(Image.class);
+		crit.add(Restrictions.eq("deleteFlag", Constants.DEL_FLG));
+
+		crit.add(Restrictions.eq("userCreate", username));
+
+		crit.setProjection(Projections.rowCount());
+		return (Long) crit.uniqueResult();
 	}
 
 }

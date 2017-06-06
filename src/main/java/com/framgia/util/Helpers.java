@@ -46,4 +46,19 @@ public class Helpers {
 		return value == null || value.size() == 0;
 	}
 
+	// HieuPV Check format FIle
+	public static Boolean checkFormatFile(String filename, String format) {
+		String suffixesFile = null;
+		try {
+			suffixesFile = filename.substring(filename.lastIndexOf(".") + 1);
+		} catch (Exception e) {
+			return false;
+		}
+		if (format.equals(suffixesFile)) {
+			return true;
+		} else {
+			return false;
+		}
+
+	}
 }

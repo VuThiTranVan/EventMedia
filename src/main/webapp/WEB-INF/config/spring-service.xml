@@ -51,4 +51,13 @@
 		</property>
 	</bean>
 
+	<bean id="FileUploadService" parent="transactionProxyTemplate">
+		<property name="target">
+			<bean class="com.framgia.service.impl.FileUploadServiceImpl">
+				<property name="imageDAO" ref="ImageDAO"></property>
+				<property name="userDAO" ref="UserDAO"></property>
+				<property name="groupDAO" ref="GroupDAO"></property>
+			</bean>
+		</property>
+	</bean>
 </beans>

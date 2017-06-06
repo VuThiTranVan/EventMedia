@@ -21,6 +21,7 @@
 			<ref bean="sessionFactory" />
 		</property>
 	</bean>
+	
 	<bean id="ImageDAO" class="com.framgia.dao.impl.ImageDAOImpl">
 		<property name="sessionFactory">
 			<ref bean="sessionFactory" />

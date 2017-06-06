@@ -51,4 +51,11 @@ public interface Constants {
 	public static Integer DEFAULT_VALUE_0 = 0;
 	public static Integer DEFAULT_VALUE_1 = 1;
 
+	// Cloudinary cloud_name, API_Key and API_Secret
+	public static String CLOUDINARY_CLOUD_NAME = "framgia-project2";
+	public static String CLOUDINARY_API_KEY = "648469395782282";
+	public static String CLOUDINARY_API_SECRET = "OhcyxdSzZnL-nPI1X9LFcuzsjG4";
+	
+	// path
+	public static String PATH_UPLOAD = "mm_images/profile/";
 }
