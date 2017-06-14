@@ -1,7 +1,6 @@
 package com.framgia.model;
 
 import java.io.Serializable;
-import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -23,14 +22,14 @@ public class Image implements Serializable {
 	private Date dateCreate;
 	private String userUpdate;
 	private Date dateUpdate;
-	List<Vote> vote = new ArrayList<Vote>();
+	List<Vote> votes;
 
 	public Image() {
 		super();
 	}
 
 	public Image(Integer id, String url, String description, String title, Group group, String deleteFlag,
-	        String userCreate, Date dateCreate, String userUpdate, Date dateUpdate, List<Vote> vote) {
+	        String userCreate, Date dateCreate, String userUpdate, Date dateUpdate, List<Vote> votes) {
 		super();
 		this.id = id;
 		this.url = url;
@@ -42,7 +41,7 @@ public class Image implements Serializable {
 		this.dateCreate = dateCreate;
 		this.userUpdate = userUpdate;
 		this.dateUpdate = dateUpdate;
-		this.vote = vote;
+		this.votes = votes;
 	}
 
 	public Integer getId() {
@@ -125,12 +124,12 @@ public class Image implements Serializable {
 		this.dateUpdate = dateUpdate;
 	}
 
-	public List<Vote> getVote() {
-		return vote;
+	public List<Vote> getVotes() {
+		return votes;
 	}
 
-	public void setVote(List<Vote> vote) {
-		this.vote = vote;
+	public void setVotes(List<Vote> votes) {
+		this.votes = votes;
 	}
 
 }

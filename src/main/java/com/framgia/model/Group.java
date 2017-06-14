@@ -1,7 +1,6 @@
 package com.framgia.model;
 
 import java.io.Serializable;
-import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -14,7 +13,7 @@ import java.util.List;
 @SuppressWarnings("serial")
 public class Group implements Serializable {
 	private Integer id;
-	private User userCreate;
+	private User user;
 	private String name;
 	private String description;
 	private String note;
@@ -26,8 +25,8 @@ public class Group implements Serializable {
 	private Date dateCreate;
 	private String userUpdate;
 	private Date dateUpdate;
-	private List<Image> image = new ArrayList<Image>();
-	private List<User> user = new ArrayList<User>();
+	private List<Image> images;
+	private List<User> users;
 
 	public Group() {
 		super();
@@ -35,10 +34,10 @@ public class Group implements Serializable {
 
 	public Group(Integer id, User userCreate, String name, String description, String note, Integer type,
 	        Integer status, Date dateStart, Date dateEnd, String deleteFlag, Date dateCreate, String userUpdate,
-	        Date dateUpdate, List<Image> image, List<User> user) {
+	        Date dateUpdate, List<Image> images, List<User> users) {
 		super();
 		this.id = id;
-		this.userCreate = userCreate;
+		this.user = userCreate;
 		this.name = name;
 		this.description = description;
 		this.note = note;
@@ -50,12 +49,8 @@ public class Group implements Serializable {
 		this.dateCreate = dateCreate;
 		this.userUpdate = userUpdate;
 		this.dateUpdate = dateUpdate;
-		this.image = image;
-		this.user = user;
-	}
-
-	public void setImage(List<Image> image) {
-		this.image = image;
+		this.images = images;
+		this.users = users;
 	}
 
 	public Integer getId() {
@@ -66,12 +61,12 @@ public class Group implements Serializable {
 		this.id = id;
 	}
 
-	public User getUserCreate() {
-		return userCreate;
+	public User getUser() {
+		return user;
 	}
 
-	public void setUserCreate(User userCreate) {
-		this.userCreate = userCreate;
+	public void setUser(User userCreate) {
+		this.user = userCreate;
 	}
 
 	public String getName() {
@@ -162,16 +157,20 @@ public class Group implements Serializable {
 		this.dateUpdate = dateUpdate;
 	}
 
-	public List<Image> getImage() {
-		return image;
+	public void setImages(List<Image> images) {
+		this.images = images;
 	}
 
-	public List<User> getUser() {
-		return user;
+	public List<Image> getImages() {
+		return images;
 	}
 
-	public void setUser(List<User> user) {
-		this.user = user;
+	public List<User> getUsers() {
+		return users;
+	}
+
+	public void setUsers(List<User> users) {
+		this.users = users;
 	}
 
 }

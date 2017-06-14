@@ -25,6 +25,10 @@ public class UserDAOImpl extends AbstractDAO<Integer, User> implements UserDAO {
 
 	private static final Logger logger = Logger.getLogger(UserDAOImpl.class);
 
+	public UserDAOImpl() {
+		super(User.class);
+	}
+
 	@Override
 	public User findByUserName(String username) {
 		logger.info("UserDAO _ findByUsername");
@@ -34,18 +38,6 @@ public class UserDAOImpl extends AbstractDAO<Integer, User> implements UserDAO {
 		crit.add(Restrictions.eq("username", username));
 		user = (User) crit.uniqueResult();
 		return user;
-	}
-
-	@Override
-	public void create(User user) {
-		logger.info("UserDAO _ createUser");
-		saveOrUpdate(user);
-	}
-
-	@Override
-	public void update(User user) {
-		logger.info("UserDAO _ updateUser");
-		saveOrUpdate(user);
 	}
 
 	@SuppressWarnings("unchecked")
@@ -86,7 +78,7 @@ public class UserDAOImpl extends AbstractDAO<Integer, User> implements UserDAO {
 		crit.add(Restrictions.eq("deleteFlag", Constants.DEL_FLG));
 		crit.add(Restrictions.eq("idGroup", id));
 		crit.setProjection(Projections.rowCount());
-		return (Long) crit.uniqueResult(); 
+		return (Long) crit.uniqueResult();
 
 	}
 

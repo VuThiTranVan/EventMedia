@@ -93,7 +93,7 @@ public class ManageGroupServiceImpl extends BaseServiceImpl implements ManageGro
 				group.setUserUpdate(userName);
 				group.setDateUpdate(DateUtil.getDateNow());
 
-				groupDAO.updateGroup(group);
+				groupDAO.saveOrUpdate(group);
 			}
 
 			return true;

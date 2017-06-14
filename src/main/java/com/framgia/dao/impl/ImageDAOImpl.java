@@ -19,6 +19,10 @@ public class ImageDAOImpl extends AbstractDAO<Integer, Image> implements ImageDA
 
 	private static final Logger logger = Logger.getLogger(ImageDAOImpl.class);
 
+	public ImageDAOImpl() {
+		super(Image.class);
+	}
+
 	@SuppressWarnings("deprecation")
 	@Override
 	public Image findById(Integer id, boolean isLock) {
@@ -33,12 +37,6 @@ public class ImageDAOImpl extends AbstractDAO<Integer, Image> implements ImageDA
 		}
 
 		return (Image) crit.uniqueResult();
-	}
-
-	@Override
-	public void update(Image image) {
-		logger.info("Update iamge");
-		saveOrUpdate(image);
 	}
 
 	@Override

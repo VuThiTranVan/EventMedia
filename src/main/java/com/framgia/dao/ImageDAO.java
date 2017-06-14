@@ -4,19 +4,17 @@ import java.util.List;
 
 import com.framgia.model.Image;
 
-public interface ImageDAO {
+public interface ImageDAO extends InterfaceDAO<Integer, Image> {
 
-	public Image findById(Integer id, boolean isLock);
+	Image findById(Integer id, boolean isLock);
 
-	public Image getImageByUserCreate(String username, Integer idGroup);
-
-	public void update(Image image);
+	Image getImageByUserCreate(String username, Integer idGroup);
 
 	Long findByUserCreate(String username);
 
 	Image findImage(String username);
 
-	public List<Image> getListImage(String condition, int first, int max);
+	List<Image> getListImage(String condition, int first, int max);
 
-	public Integer getNoOfRecord(String condition);
+	Integer getNoOfRecord(String condition);
 }

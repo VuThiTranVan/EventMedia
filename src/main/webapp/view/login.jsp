@@ -59,6 +59,7 @@
 							<input type="hidden" name="${_csrf.parameterName}"
 								value="${_csrf.token}" />
 						</form>
+						<a href="/EventMedia/register">Resigter User</a>
 					</div>
 				</div>
 			</div>

@@ -46,7 +46,7 @@ public class ImageServiceImpl extends BaseServiceImpl implements ImageService {
 			group.setId(idFreeGroup);
 			image.setGroup(group);
 
-			getImageDAO().update(image);
+			imageDAO.saveOrUpdate(image);
 			return true;
 		} catch (Exception e) {
 			logger.error("remove image throw out group error", e);
@@ -99,10 +99,10 @@ public class ImageServiceImpl extends BaseServiceImpl implements ImageService {
 	}
 
 	@Override
-	public boolean remoteVote(Integer idImage, Integer idUser) {
+	public boolean removeVote(Integer idImage, Integer idUser) {
 		try {
 			Vote vote = getVoteDAO().findVoteToDelete(idImage, idUser);
-			getVoteDAO().deleteVote(vote);
+			getVoteDAO().delete(vote);
 			return true;
 		} catch (Exception e) {
 			logger.error("remove vote error", e);
@@ -123,7 +123,7 @@ public class ImageServiceImpl extends BaseServiceImpl implements ImageService {
 			vote.setDateCreate(DateUtil.getDateNow());
 			vote.setUserUpdate(Helpers.getUsername());
 
-			getVoteDAO().create(vote);
+			voteDAO.saveOrUpdate(vote);
 			return true;
 		} catch (ParseException e) {
 			logger.error("add vote error", e);

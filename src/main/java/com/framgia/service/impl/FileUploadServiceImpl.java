@@ -81,7 +81,7 @@ public class FileUploadServiceImpl extends BaseServiceImpl implements FileUpload
 			image.setUserUpdate(username);
 
 			// Insert data into table Image
-			imageDAO.update(image);
+			imageDAO.saveOrUpdate(image);
 
 			return image.getId();
 		} catch (Exception e) {

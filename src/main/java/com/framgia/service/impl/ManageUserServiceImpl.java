@@ -174,7 +174,7 @@ public class ManageUserServiceImpl extends BaseServiceImpl implements ManageUser
 					group.setUserUpdate(userName);
 					group.setDateUpdate(DateUtil.getDateNow());
 
-					groupDAO.updateGroup(group);
+					groupDAO.saveOrUpdate(group);
 				}
 			}
 
@@ -185,7 +185,7 @@ public class ManageUserServiceImpl extends BaseServiceImpl implements ManageUser
 			updUser.setUserUpdate(userName);
 			updUser.setDateUpdate(DateUtil.getDateNow());
 
-			userDAO.create(updUser);
+			userDAO.saveOrUpdate(updUser);
 
 			return true;
 

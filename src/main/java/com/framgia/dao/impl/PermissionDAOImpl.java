@@ -22,6 +22,10 @@ public class PermissionDAOImpl extends AbstractDAO<Integer, Permission> implemen
 	// log
 	private static final Logger logger = Logger.getLogger(PermissionDAOImpl.class);
 
+	public PermissionDAOImpl() {
+		super(Permission.class);
+	}
+
 	@SuppressWarnings("unchecked")
 	@Override
 	public List<Permission> findByDelFlg() {

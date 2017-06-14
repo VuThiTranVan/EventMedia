@@ -17,7 +17,7 @@ public interface ImageService extends BaseService {
 
 	public Integer getNoOfRecord(String condition);
 
-	boolean addVote(Integer idImage, Integer idUser) throws ParseException;
+	public boolean addVote(Integer idImage, Integer idUser) throws ParseException;
 
-	boolean remoteVote(Integer id, Integer idUser);
+	public boolean removeVote(Integer id, Integer idUser);
 }

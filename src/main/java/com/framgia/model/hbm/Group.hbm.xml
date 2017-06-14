@@ -9,8 +9,8 @@
 		<id name="id" column="ID">
 			<generator class="increment" />
 		</id>
-		<many-to-one name="userCreate" class="User" fetch="select">
-			<column name="idUser" not-null="true" />
+		<many-to-one name="user" class="User">
+			<column name="IDUSER" not-null="true" />
 		</many-to-one>
 		<property name="name" column="NAME" />
 		<property name="description" column="DESCRIPTION" />
@@ -24,16 +24,14 @@
 		<property name="userUpdate" column="USERUPDATE" />
 		<property name="dateUpdate" column="DATEUPDATE" />
 
-		<list name="image" lazy="true" fetch="select"
-			inverse="true">
-			<key column="idGroup" not-null="true" />
-			<list-index column="id" />
+		<list name="images" lazy="true" inverse="true">
+			<key column="IDGROUP" not-null="true" />
+			<list-index column="ID" />
 			<one-to-many class="Image" />
 		</list>
 
-		<list name="user" lazy="true" fetch="select"
-			inverse="true">
-			<key column="idGroup" not-null="true" />
+		<list name="users" lazy="true" inverse="true">
+			<key column="IDGROUP" not-null="true" />
 			<list-index column="id" />
 			<one-to-many class="User" />
 		</list>

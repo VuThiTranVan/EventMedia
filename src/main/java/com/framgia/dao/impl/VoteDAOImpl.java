@@ -1,5 +1,6 @@
 package com.framgia.dao.impl;
 
+import org.apache.log4j.Logger;
 import org.hibernate.Criteria;
 import org.hibernate.LockMode;
 import org.hibernate.criterion.Restrictions;
@@ -9,16 +10,10 @@ import com.framgia.dao.VoteDAO;
 import com.framgia.model.Vote;
 
 public class VoteDAOImpl extends AbstractDAO<Integer, Vote> implements VoteDAO {
-
-	@Override
-	public void create(Vote vote) {
-		logger.info("VoteDAO _ create vote");
-		saveOrUpdate(vote);
-	}
-	@Override
-	public void deleteVote(Vote vote) {
-		logger.info("VoteDAO _ delete vote");
-		delete(vote);
+	// log
+		private static final Logger logger = Logger.getLogger(VoteDAOImpl.class);
+	public VoteDAOImpl() {
+		super(Vote.class);
 	}
 
 	@Override

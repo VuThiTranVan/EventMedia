@@ -122,7 +122,7 @@ public class ImageController {
 	@ResponseBody
 	public boolean removeVote(@PathVariable("id") Integer id) {
 
-		return imageService.remoteVote(id, Helpers.getIdUser());
+		return imageService.removeVote(id, Helpers.getIdUser());
 
 	}
 }

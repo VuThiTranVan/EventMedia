@@ -5,17 +5,13 @@ import java.util.List;
 import com.framgia.bean.ConditionGroupBean;
 import com.framgia.model.Group;
 
-public interface GroupDAO {
+public interface GroupDAO extends InterfaceDAO<Integer, Group> {
 
-	public Group findById(Integer id, boolean isLock);
+	Group findById(Integer id, boolean isLock);
 
-	public void updateGroup(Group group);
+	List<Group> findByGroupType(Integer groupType);
 
-	public Group create(Group group);
+	List<Group> findByConditon(ConditionGroupBean conditionGroupBean);
 
-	public List<Group> findByGroupType(Integer groupType);
-
-	public List<Group> findByConditon(ConditionGroupBean conditionGroupBean);
-
-	public Long getCountType(Integer type, Integer status, String deleteFlag);
+	Long getCountType(Integer type, Integer status, String deleteFlag);
 }

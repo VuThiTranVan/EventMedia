@@ -13,14 +13,13 @@
 		<property name="description" column="DESCRIPTION" />
 		<property name="title" column="TITLE" />
 
-		<many-to-one name="group" class="Group" fetch="select">
-			<column name="idGroup" not-null="true" />
+		<many-to-one name="group" class="Group" >
+			<column name="IDGROUP" not-null="true" />
 		</many-to-one>
 
-		<list name="vote" lazy="true" fetch="select"
-			inverse="true">
-			<key column="idImage" not-null="true" />
-			<list-index column="id" />
+		<list name="votes" lazy="true" inverse="true">
+			<key column="IDIMAGE" not-null="true" />
+			<list-index column="ID" />
 			<one-to-many class="Vote" />
 		</list>
 

@@ -52,7 +52,8 @@ public class GroupServiceImpl extends BaseServiceImpl implements GroupService {
 				groupInfo.setStatus(Constants.GROUP_STATUS_CODE_ACTIVE);
 				groupInfo.setDeleteFlag(Constants.DEL_FLG);
 
-				Group group = getGroupDAO().create(ConvetBeanAndModel.convertGroupBeanToModel(groupInfo));
+				Group group = ConvetBeanAndModel.convertGroupBeanToModel(groupInfo);
+				groupDAO.saveOrUpdate(group);
 
 				if (group == null)
 					return false;
@@ -62,7 +63,7 @@ public class GroupServiceImpl extends BaseServiceImpl implements GroupService {
 				user.setIdGroup(group.getId());
 				user.setPermission(new Permission(Constants.PERMISSION_CODE_MANAGER));
 
-				getUserDAO().update(user);
+				userDAO.saveOrUpdate(user);
 				return true;
 			}
 		} catch (Exception e) {
@@ -103,11 +104,11 @@ public class GroupServiceImpl extends BaseServiceImpl implements GroupService {
 			group.setUserUpdate(userUpdate);
 
 			if (Constants.GROUP_STATUS_CODE_INACTIVE.equals(groupInfo.getStatus())) {
-				if (!remoteUserInGroup(group, userUpdate, dateUpdate))
+				if (!removeUserInGroup(group, userUpdate, dateUpdate))
 					return false;
 			}
 
-			getGroupDAO().updateGroup(group);
+			groupDAO.saveOrUpdate(group);
 			return true;
 		} catch (Exception e) {
 			logger.error("update Group", e);
@@ -128,10 +129,10 @@ public class GroupServiceImpl extends BaseServiceImpl implements GroupService {
 			group.setDateUpdate(dateUpdate);
 			group.setUserUpdate(userUpdate);
 
-			if (!remoteUserInGroup(group, userUpdate, dateUpdate))
+			if (!removeUserInGroup(group, userUpdate, dateUpdate))
 				return false;
 
-			getGroupDAO().updateGroup(group);
+			groupDAO.saveOrUpdate(group);
 			return true;
 		} catch (Exception e) {
 			logger.error("update Group _ Delete logic", e);
@@ -140,11 +141,11 @@ public class GroupServiceImpl extends BaseServiceImpl implements GroupService {
 		return false;
 	}
 
-	protected boolean remoteUserInGroup(Group group, String userUpdate, Date dateUpdate) {
+	private boolean removeUserInGroup(Group group, String userUpdate, Date dateUpdate) {
 		try {
 
 			// remove all user in group: user.idGroup = null
-			for (User item : group.getUser()) {
+			for (User item : group.getUsers()) {
 				if (item == null)
 					continue;
 
@@ -161,7 +162,7 @@ public class GroupServiceImpl extends BaseServiceImpl implements GroupService {
 				if (group.getDeleteFlag() == Constants.DEL_FLG_DEL)
 					user.setPermission(new Permission(Constants.PERMISSION_CODE_USER));
 
-				getUserDAO().update(user);
+				userDAO.saveOrUpdate(user);
 			}
 
 			return true;
@@ -179,11 +180,11 @@ public class GroupServiceImpl extends BaseServiceImpl implements GroupService {
 		}
 
 		List<String> content = new ArrayList<String>();
-		for (Image item : group.getImage()) {
+		for (Image item : group.getImages()) {
 			if (item == null)
 				continue;
 			int count = 0;
-			for (Vote vote : item.getVote()) {
+			for (Vote vote : item.getVotes()) {
 				if (vote != null) {
 					count++;
 				}

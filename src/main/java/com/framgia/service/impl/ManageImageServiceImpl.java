@@ -91,7 +91,7 @@ public class ManageImageServiceImpl extends BaseServiceImpl implements ManageIma
 			image.setUserUpdate(username);
 
 			// Insert data into table Image
-			imageDAO.update(image);
+			imageDAO.saveOrUpdate(image);
 
 			return true;
 
@@ -114,7 +114,7 @@ public class ManageImageServiceImpl extends BaseServiceImpl implements ManageIma
 				image.setUserUpdate(username);
 				image.setDateUpdate(DateUtil.getDateNow());
 
-				imageDAO.update(image);
+				imageDAO.saveOrUpdate(image);
 			}
 
 			return true;

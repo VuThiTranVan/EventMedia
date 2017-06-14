@@ -10,12 +10,12 @@
 			<generator class="increment" />
 		</id>
 
-		<many-to-one name="image" class="Image" fetch="select">
-			<column name="idImage" not-null="true" />
+		<many-to-one name="image" class="Image" >
+			<column name="IDIMAGE" not-null="true" />
 		</many-to-one>
 
-		<many-to-one name="user" class="User" fetch="select">
-			<column name="idUser" />
+		<many-to-one name="user" class="User" >
+			<column name="IDUSER" />
 		</many-to-one>
 
 		<property name="deleteFlag" column="DELETEFLAG" />

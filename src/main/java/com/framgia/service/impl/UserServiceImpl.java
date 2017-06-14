@@ -91,7 +91,7 @@ public class UserServiceImpl extends BaseServiceImpl implements UserService {
 			userInfo.setDateUpdate(DateUtil.getDateNow());
 			userInfo.setDeleteFlag(Constants.DEL_FLG);
 			User user = ConvetBeanAndModel.convertUserBeanToModel(userInfo);
-			getUserDAO().create(user);
+			userDAO.saveOrUpdate(user);
 			return true;
 		} catch (Exception e) {
 			logger.error("addUser", e);
@@ -115,7 +115,7 @@ public class UserServiceImpl extends BaseServiceImpl implements UserService {
 	public boolean updatetUser(UserInfo userInfo) {
 		try {
 			User user = ConvetBeanAndModel.convertUserBeanToModel(userInfo);
-			getUserDAO().update(user);
+			userDAO.saveOrUpdate(user);
 			return true;
 		} catch (Exception e) {
 			logger.error("update user", e);
@@ -137,7 +137,7 @@ public class UserServiceImpl extends BaseServiceImpl implements UserService {
 			user.setDateUpdate(DateUtil.getDateNow());
 			user.setUserUpdate(Helpers.getUsername());
 
-			getUserDAO().update(user);
+			userDAO.saveOrUpdate(user);
 			return true;
 		} catch (Exception e) {
 			logger.error("remove user", e);
@@ -158,7 +158,7 @@ public class UserServiceImpl extends BaseServiceImpl implements UserService {
 			user.setDateUpdate(DateUtil.getDateNow());
 			user.setUserUpdate(Helpers.getUsername());
 
-			getUserDAO().update(user);
+			userDAO.saveOrUpdate(user);
 			return true;
 		} catch (Exception e) {
 			logger.error("remove user", e);

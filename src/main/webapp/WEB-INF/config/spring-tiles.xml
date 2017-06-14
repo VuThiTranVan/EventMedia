@@ -482,4 +482,27 @@
 		</put-list-attribute>
 	</definition>
 
+	<!-- statistical image of group -->
+	<definition name="statisticalImageForGroup" extends="base.definition">
+		<put-attribute name="title" value="Statistical Image For Group" />
+		<put-attribute name="screenname" value="STATISTICAL IMAGE" />
+		<put-attribute name="body" value="/view/managerPage/highChart.jsp" />
+		<put-list-attribute name="cssDefault">
+			<add-attribute value="/assets/css/bootstrap.min.css" />
+			<add-attribute value="/assets/css/dataTables.bootstrap.min.css" />
+			<add-attribute value="/assets/css/style.css" />
+		</put-list-attribute>
+		<put-list-attribute name="jsDefault">
+			<add-attribute value="/assets/js/jquery.min.js" />
+			<add-attribute value="/assets/js/bootstrap.min.js" />
+			<add-attribute value="/assets/js/bootstrap-datepicker.js" />
+			<add-attribute value="/assets/js/init.js" />
+		</put-list-attribute>
+		<put-list-attribute name="jsAdd">
+			<add-attribute value="/assets/js/highchart/highcharts.js" />
+			<add-attribute value="/assets/js/highchart/data.js" />
+			<add-attribute value="/assets/js/highchart/exporting.js" />
+			<add-attribute value="/assets/js/manager/highChart.js" />
+		</put-list-attribute>
+	</definition>
 </tiles-definitions>

@@ -100,8 +100,8 @@ public class ConvetBeanAndModel {
 			GroupInfo groupInfo = new GroupInfo();
 			groupInfo.setId(group.getId());
 
-			if (group.getUserCreate() != null) {
-				groupInfo.setUserCreate(convertUserModelToBean(group.getUserCreate()));
+			if (group.getUser() != null) {
+				groupInfo.setUserCreate(convertUserModelToBean(group.getUser()));
 			}
 
 			groupInfo.setName(group.getName());
@@ -121,9 +121,9 @@ public class ConvetBeanAndModel {
 			groupInfo.setDateUpdate(group.getDateUpdate());
 
 			// list Image
-			if (group.getImage() != null) {
+			if (group.getImages() != null) {
 				List<ImageInfo> listImageInfo = new ArrayList<ImageInfo>();
-				for (Image item : group.getImage()) {
+				for (Image item : group.getImages()) {
 					if (item == null)
 						continue;
 
@@ -138,9 +138,9 @@ public class ConvetBeanAndModel {
 			}
 
 			// list User
-			if (group.getUser() != null) {
+			if (group.getUsers() != null) {
 				List<UserInfo> listUserInfo = new ArrayList<UserInfo>();
-				for (User item : group.getUser()) {
+				for (User item : group.getUsers()) {
 					if (item == null)
 						continue;
 
@@ -165,7 +165,7 @@ public class ConvetBeanAndModel {
 			Group group = new Group();
 			group.setId(groupInfo.getId());
 			if (groupInfo.getUserCreate() != null) {
-				group.setUserCreate(convertUserBeanToModel(groupInfo.getUserCreate()));
+				group.setUser(convertUserBeanToModel(groupInfo.getUserCreate()));
 			}
 			group.setName(groupInfo.getName());
 			group.setDescription(groupInfo.getDescription());
@@ -193,7 +193,7 @@ public class ConvetBeanAndModel {
 					listImage.add(image);
 
 				}
-				group.setImage(listImage);
+				group.setImages(listImage);
 			}
 
 			// list User
@@ -210,7 +210,7 @@ public class ConvetBeanAndModel {
 					listUser.add(user);
 
 				}
-				group.setUser(listUser);
+				group.setUsers(listUser);
 			}
 
 			return group;
@@ -231,9 +231,9 @@ public class ConvetBeanAndModel {
 			imageInfo.setUserUpdate(image.getUserUpdate());
 			imageInfo.setDateUpdate(image.getDateUpdate());
 
-			if (image.getVote() != null) {
+			if (image.getVotes() != null) {
 				List<VoteInfo> listVoteInfo = new ArrayList<VoteInfo>();
-				for (Vote item : image.getVote()) {
+				for (Vote item : image.getVotes()) {
 					if (item == null)
 						continue;
 
@@ -288,7 +288,7 @@ public class ConvetBeanAndModel {
 					listVote.add(vote);
 
 				}
-				image.setVote(listVote);
+				image.setVotes(listVote);
 			}
 
 			return image;
