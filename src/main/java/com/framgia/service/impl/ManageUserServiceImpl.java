@@ -4,15 +4,11 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.apache.log4j.Logger;
-import org.springframework.beans.factory.annotation.Autowired;
 
 import com.framgia.bean.ConditionUserBean;
 import com.framgia.bean.PermissionInfo;
 import com.framgia.bean.StatisticalInfo;
 import com.framgia.bean.UserInfo;
-import com.framgia.dao.GroupDAO;
-import com.framgia.dao.PermissionDAO;
-import com.framgia.dao.UserDAO;
 import com.framgia.model.Group;
 import com.framgia.model.Permission;
 import com.framgia.model.User;
@@ -28,21 +24,8 @@ import com.framgia.util.Helpers;
  * @author vu.thi.tran.van@framgia.com
  * 
  */
+@SuppressWarnings("serial")
 public class ManageUserServiceImpl extends BaseServiceImpl implements ManageUserService {
-
-	/**
-	 * 
-	 */
-	private static final long serialVersionUID = 1L;
-
-	@Autowired
-	PermissionDAO permissionDAO;
-
-	@Autowired
-	UserDAO userDAO;
-
-	@Autowired
-	GroupDAO groupDAO;
 
 	private static final Logger logger = Logger.getLogger(ManageUserServiceImpl.class);
 
@@ -191,8 +174,8 @@ public class ManageUserServiceImpl extends BaseServiceImpl implements ManageUser
 
 		} catch (Exception e) {
 			logger.error("Error delete logic User: ", e);
+			throw e;
 		}
-		return false;
 	}
 
 	@Override

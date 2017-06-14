@@ -1,6 +1,5 @@
 package com.framgia.controller;
 
-import java.text.ParseException;
 import java.util.Date;
 
 import org.apache.log4j.Logger;
@@ -66,8 +65,7 @@ public class UserController {
 	}
 
 	@RequestMapping(value = "/register", method = RequestMethod.POST)
-	public RedirectView createUser(@ModelAttribute("user") UserInfo user, UriComponentsBuilder ucBuilder)
-	        throws ParseException {
+	public RedirectView createUser(@ModelAttribute("user") UserInfo user, UriComponentsBuilder ucBuilder) {
 		logger.info("Regiter page: execute");
 		userService.addUser(user);
 

@@ -7,6 +7,11 @@
  * vu.thi.tran.van@framgia.com
  * 26/05/2017
  -->
+<label id="invalidDate" class="hidden_elem">
+	<spring:message code='message-is-Date' text='' /></label>
+<label id="messageRequired" class="hidden_elem">
+	<spring:message code='message-required' text='' /></label>
+ 
 <section class="bg_white clearfix messageError">
 	<div class="body clearfix mt20 hidden_elem" id="messageContainer">
 		<spring:message code='regist_group_success' text='' /> </div>
@@ -35,30 +40,27 @@
 							<th>Name</th>
 							<td>
 								<form:textarea maxlength="50" path="name" name="name" id="name"
-										class="form-control css-required" placeholder="This is item required"
-										style="display: inline; width: 65%;" />
+										class="form-control css-required" placeholder="This is item required" />
 							</td>
 						</tr>
 						<tr>
 							<th>Description</th>
 
 							<td><form:textarea maxlength="500" path="description" name="description" id="description"
-										class="form-control css-required" placeholder="This is item required"
-										style="display: inline; width: 65%;" />
+										class="form-control css-required" placeholder="This is item required" />
 							</td>
 						</tr>
 						<tr>
 							<th>Note</th>
 							<td><form:textarea maxlength="500" path="note" name="note" id="note"
-										class="form-control" placeholder="This is not item required"
-										style="display: inline; width: 65%;" />
+										class="form-control form-text-65" placeholder="This is not item required" />
 							</td>
 						</tr>
 						<tr>
 							<th>Type</th>
 							<td>
 								<form:radiobutton path="type" name="type" value="0" checked="true" />Private
-								<span style="padding-left: 5px;"></span>
+								<span class="common-padding-left5"></span>
 								<form:radiobutton path="type" name="type" value="1" />Public
 							</td>
 						</tr>
@@ -66,18 +68,16 @@
 							<th>Date start</th>
 							<td><form:input
 										path="dateStart" name="dateStart" id="dateStart"
-										class="form-control css-required"
-										placeholder="This is item required"
-										style="display: inline; width: 65%;" />
+										class="form-control css-required form-text-65"
+										placeholder="This is item required" />
 							</td>
 						</tr>
 						<tr>
 							<th>Date end</th>
 							<td><form:input
 										path="dateEnd" name="dateEnd" id="dateEnd"
-										class="form-control css-required"
-										placeholder="This is item required"
-										style="display: inline; width: 65%;" />
+										class="form-control form-text-65 css-required"
+										placeholder="This is item required" />
 							</td>
 						</tr>
 					</table>

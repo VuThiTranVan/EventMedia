@@ -109,10 +109,10 @@ jQuery.validator.addMethod("isDate",
 	                return false;
 	    }
 	    return true;
-}, '{0} is invalid format date.');
+}, '{0} ' + $("#invalidDate").text());
 
 jQuery.extend(jQuery.validator.messages, {
-	required : "This is item required"
+	required : $("#messageRequired").text()
 });
 
 //Setup form validation on the #update-form element

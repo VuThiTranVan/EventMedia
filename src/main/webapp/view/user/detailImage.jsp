@@ -35,7 +35,7 @@
 						<div class="panel-body">
 
 							<div class="alert alert-success">
-								<p id="err_data" style="color: red">${err_data}</p>
+								<p id="err_data" class="error_red">${err_data}</p>
 								<div class="alert alert-danger alert-dismissable" id="formAlert">
 									<strong><spring:message code='error' /></strong>
 									<spring:message code='required_fileUpload' />
@@ -60,8 +60,8 @@
 									<strong><spring:message code='error' /></strong>
 									<spring:message code='fill_empty' />
 								</div>
-								<p id="success" style="color: green">${success}</p>
-								<p id="fail" style="color: green">${fail}</p>
+								<p id="success" class="noti-green">${success}</p>
+								<p id="fail" class="noti-green">${fail}</p>
 							</div>
 							<table class="table-bordered profile_regist">
 								<tr>
@@ -75,9 +75,7 @@
 									<td><span id="lbltitle" class="lableForm"><label>${imageInfo.title}</label></span>
 										<span class="editForm hidden_elem"> <input name="title"
 											id="title" value="${imageInfo.title}"
-											class="form-control css-required"
-											placeholder="This is item required"
-											style="display: inline; width: 65%;" />
+											class="form-control form-text-65  css-required" placeholder="This is item required" />
 									</span></td>
 								</tr>
 								<tr>
@@ -111,9 +109,8 @@
 									<td><span id="lbldescription" class="lableForm"><label>${imageInfo.description}</label></span>
 										<span class="editForm hidden_elem"> <textarea
 												name="description" id="description" rows="10" cols="100"
-												class="form-control css-required"
-												placeholder="This is item required"
-												style="display: inline; width: 65%;">${imageInfo.description}</textarea>
+												class="form-control form-text-65  css-required"
+												placeholder="This is item required">${imageInfo.description}</textarea>
 									</span></td>
 								</tr>
 							</table>

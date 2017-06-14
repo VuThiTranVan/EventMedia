@@ -63,12 +63,20 @@ public class DateUtil {
 		}
 	}
 
-	public static Date getDateNow() throws ParseException {
-		DateFormat df = new SimpleDateFormat(date_time_format);
-		Date date = new Date();
-		Date convertedCurrentDate = df.parse(df.format(date));
+	public static Date getDateNow() {
 
-		return convertedCurrentDate;
+		try {
+			DateFormat df = new SimpleDateFormat(date_time_format);
+			Date date = new Date();
+			Date convertedCurrentDate;
+			convertedCurrentDate = df.parse(df.format(date));
+
+			return convertedCurrentDate;
+		} catch (ParseException e) {
+			logger.error("Error getDateNow: ", e);
+		}
+		return null;
+
 	}
 
 	public static SimpleDateFormat getSimpleDateFormat() {

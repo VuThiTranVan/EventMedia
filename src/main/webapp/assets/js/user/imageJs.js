@@ -23,8 +23,10 @@ function goPageTotal(totalPage) {
 }
 
 $("#noPage").blur(function() {
-	$("#searchForm").attr("action", "/EventMedia/searchImage");
-	$("#searchForm").submit();
+	if ( $("#noPage").val().match(/^\d+$/) && $("#noPage").val() != "" ) {
+		$("#searchForm").attr("action", "/EventMedia/searchImage");
+		$("#searchForm").submit();
+	}
 });
 
 function voteImage(el, id) {
@@ -76,7 +78,7 @@ function removeVoteImage(el, id) {
 }
 window.onload = function() {
 	$(this).modallery({
-		title : "<b>Detail Image</b>",
+		title : $("#homeTitleModallery").text(),
 		navigate : true,
 		arrows : true,
 		keypress : true

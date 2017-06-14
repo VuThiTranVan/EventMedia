@@ -1,0 +1,24 @@
+.group-head-left {
+	float: left;
+	with: 75%
+}
+
+div.panel-heading {
+	height: 45px;
+}
+
+div.btnRequestJoin, #divBtnEdit {
+	float: right;
+	with: 20%;
+	margin-top: -4px;
+}
+
+div.col-sm-12 div.lblGroupLeft {
+	width: 12%;
+	float: left;
+}
+
+div.col-sm-12 div.lblGroupRight {
+	width: 88%;
+	float: left;
+}

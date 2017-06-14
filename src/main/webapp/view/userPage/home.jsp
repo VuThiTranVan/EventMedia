@@ -10,6 +10,9 @@
  -->
 
 <body>
+	<label id="homeTitleModallery" class="hidden_elem">
+		<spring:message code='home_title_modallery' text='' /></label>
+
 	<section class="bg_white clearfix messageError">
 		<div class="body clearfix mt20 hidden_elem" id="mgsVote">
 			<spring:message code='vote_error' text='' /> </div>
@@ -64,7 +67,7 @@
 								</div>
 							</form>
 						</div>
-						<div class="clearfix" style="padding-bottom: 10px;"></div>
+						<div class="clearfix common-padding-bottom10"></div>
 
 						<!-- List image -->
 						<div class="form-group form-group-lg listResult">
@@ -75,10 +78,10 @@
 											<div class="foo">
 												<div class="main">
 													<a href="#" title="${image.title}">
-														<img src="${image.url}" style="width: 243.5px; height: 200px;" 
+														<img src="${image.url}" 
 															data-to= "${image.url}" 
-															 data-caption="<img alt='Vote for image' src='./assets/imgs/vote' style='width: 30px; height: 30px;'/>&nbsp;&nbsp; ${fn:length(image.votes)}
-															<br><img alt='Vote for image' src='./assets/imgs/event.png' style='width: 30px; height: 25px;'/>&nbsp;&nbsp;${image.group.name}<br/>Tilte: ${image.title}<br>
+															 data-caption="<img alt='Vote for image' src='./assets/imgs/vote' class='iconCaptionModallery'/>&nbsp;&nbsp; ${fn:length(image.votes)}
+															<br><img alt='Vote for image' src='./assets/imgs/event.png' class='iconCaptionModallery'/>&nbsp;&nbsp;${image.group.name}<br/>Tilte: ${image.title}<br>
 															 Description: ${image.description}<br>
 															" class="modallery" />
 													</a>
@@ -87,7 +90,7 @@
 													<c:choose>
 														<c:when test="${empty pageContext.request.userPrincipal.name}">
 															<a href="/EventMedia/login" title="Vote for image">
-																<center><img src="./assets/imgs/add_vote.png" style="width: 30px; height: 30px;"/> Add Vote </center>
+																<center><img src="./assets/imgs/add_vote.png" class="iconVote"/> Add Vote </center>
 															</a>
 														</c:when>
 														<c:otherwise>
@@ -100,18 +103,18 @@
 															<c:choose>
 																<c:when test="${flgVote}">
 																	<a onclick="voteImage(this, ${image.id})" id="add" href="#" title="Vote for image">
-																		<center><img src="./assets/imgs/add_vote.png" style="width: 30px; height: 30px;"/> Add Vote </center>
+																		<center><img src="./assets/imgs/add_vote.png" class="iconVote"/> Add Vote </center>
 																	</a>
 																	<a onclick="removeVoteImage(this, ${image.id})" id="remove" href="#" title="Vote for image" class="hidden_elem">
-																		<center><img src="./assets/imgs/remove_vote.png" style="width: 30px; height: 30px;"/> Remove Vote </center>
+																		<center><img src="./assets/imgs/remove_vote.png" class="iconVote"/> Remove Vote </center>
 																	</a>
 																</c:when>
 																<c:otherwise>
 																	<a onclick="voteImage(this, ${image.id})" id="add" href="#" title="Vote for image" class="hidden_elem">
-																		<center><img src="./assets/imgs/add_vote.png" style="width: 30px; height: 30px;"/> Add Vote </center>
+																		<center><img src="./assets/imgs/add_vote.png" class="iconVote"/> Add Vote </center>
 																	</a>
 																	<a onclick="removeVoteImage(this, ${image.id})" id="remove" href="#" title="Vote for image">
-																		<center><img src="./assets/imgs/remove_vote.png" style="width: 30px; height: 30px;"/> Remove Vote </center>
+																		<center><img src="./assets/imgs/remove_vote.png" class="iconVote"/> Remove Vote </center>
 																	</a>
 																</c:otherwise>
 															</c:choose>
@@ -119,23 +122,23 @@
 													</c:choose>
 												</div>
 											</div>
-											<div class="clearfix" style="padding-bottom: 10px;"></div>
+											<div class="clearfix common-padding-bottom10"></div>
 											<div class="imageInfo">
 												<span class="title_image">
 													Title: ${image.title}
 												</span>
 												<span class="vote_image">
-													<img alt="Vote for image" src="./assets/imgs/vote" style="width: 30px; height: 30px;"/>&nbsp;&nbsp;<span class="vote">${fn:length(image.votes)}</span>
+													<img alt="Vote for image" src="./assets/imgs/vote" class="iconVote"/>&nbsp;&nbsp;<span class="vote">${fn:length(image.votes)}</span>
 												</span>
 											</div>
-											<div class="groupInfo" style="float: left;">
+											<div class="groupInfo common-float-left">
 												<span>
 													<a href="/EventMedia/groupInfo/${image.group.id}">
-														<img alt="Vote for image" src="./assets/imgs/event.png" style="width: 30px; height: 25px;"/>
+														<img alt="Vote for image" src="./assets/imgs/event.png" class="iconVote"/>
 														&nbsp;&nbsp;${image.group.name}</a>
 												</span>
 											</div>
-											<div class="clearfix" style="padding-bottom: 10px;"></div>
+											<div class="clearfix common-padding-bottom10"></div>
 										</div>
 
 									</c:forEach>

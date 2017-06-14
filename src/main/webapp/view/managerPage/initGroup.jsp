@@ -8,6 +8,26 @@
  * 26/05/2017
  -->
 <body onload='getGroup();'>
+	<label id="mgsNoMember" class="hidden_elem">
+		<spring:message code='manager-mgs-no-member' text='' /></label>
+	<label id="mgsNoImage" class="hidden_elem">
+		<spring:message code='manager-mgs-no-image' text='' /></label>
+	<label id="mgsComfirmChangeStatus" class="hidden_elem">
+		<spring:message code='manager-mgs-comfirm-change-status' text='' /></label>
+	<label id="invalidDate" class="hidden_elem">
+		<spring:message code='message-is-Date' text='' /></label>
+	<label id="messageRequired" class="hidden_elem">
+		<spring:message code='message-required' text='' /></label>
+
+	<label id="comfirmSendMail" class="hidden_elem">
+		<spring:message code='message-comfirm-send-mail' text='' /></label>
+	<label id="comfirmSendMailSubjectReject" class="hidden_elem">
+		<spring:message code='message-comfirm-send-mail-subject-reject' text='' /></label>
+	<label id="comfirmSendMailSubjectAccept" class="hidden_elem">
+		<spring:message code='message-comfirm-send-mail-subject-accept' text='' /></label>
+	<label id="comfirmSendMailBody" class="hidden_elem">
+		<spring:message code='message-comfirm-send-mail-body' text='' /></label>
+
 	<label id="mgsRejectUserError" class="hidden_elem">
 		<spring:message code='reject_user_fail' text='' /></label>
 
@@ -41,11 +61,11 @@
 	<section class="bg_white clearfix manageUser infoGroup">
 		<div class="body clearfix mt20">
 			<div class="panel panel-default">
-				<div class="panel-heading" style="height: 45px;">
-					<div class="head-left" style="float: left; with: 75%">
+				<div class="panel-heading">
+					<div class="group-head-left">
 						<h3 class="panel-title">Information group</h3>
 					</div>
-					<div id="divBtnEdit" class="head-right hidden_elem" style="float: right; with: 20%; margin-top: -4px;">
+					<div id="divBtnEdit" class="hidden_elem">
 						<a id="btnStatistical" target="_blank" href="#"><input type="button" value="Statistical" class="btn btn-default" hidden="true"></a>
 						<a id="btnDelete" href="#"><input type="button" value="Delete" class="btn btn-default"></a>
 						<input type="button" id="btnEdit" onclick="clickBtnEdit();" value="Edit" class="btn btn-default">
@@ -62,29 +82,29 @@
 						<form:input path="deleteFlag" name="deleteFlag" id="deleteFlag" class="hidden_elem" />
 						<div class="form-group form-group-lg">
 							<div class="col-sm-12">
-								<div style="width: 12%; float: left;">
+								<div class="lblGroupLeft">
 									<label>Name</label>
 								</div>
-								<div style="width: 88%; float: left;">
-									<form:textarea maxlength="50" path="name" name="name" id="name" class="form-control" style="display: inline; width: 100%;" disabled="true" />
+								<div class="lblGroupRight">
+									<form:textarea maxlength="50" path="name" name="name" id="name" class="form-control form-text-100" disabled="true" />
 								</div>
 							</div>
-							<div class="col-sm-12" style="padding: 5px"></div>
+							<div class="col-sm-12 common-padding5"></div>
 							<div class="col-sm-12">
-								<div style="width: 12%; float: left;">
+								<div class="lblGroupLeft">
 									<label>Description</label>
 								</div>
-								<div style="width: 88%; float: left;">
-									<form:textarea maxlength="500" path="description" name="description" id="description" class="form-control" style="display: inline; width: 100%;" disabled="true" />
+								<div class="lblGroupRight">
+									<form:textarea maxlength="500" path="description" name="description" id="description" class="form-control form-text-100" disabled="true" />
 								</div>
 							</div>
-							<div class="col-sm-12" style="padding: 5px"></div>
+							<div class="col-sm-12 common-padding5"></div>
 							<div class="col-sm-6">
 								<div class="detail-borrowed-left">
 									<label>Date start</label>
 								</div>
 								<div class="detail-borrowed-right">
-									<form:input path="dateStart" name="dateStart" id="dateStart" class="form-control" style="display: inline; width: 100%;" disabled="true" />
+									<form:input path="dateStart" name="dateStart" id="dateStart" class="form-control form-text-100" disabled="true" />
 								</div>
 							</div>
 
@@ -93,27 +113,27 @@
 									<label>Date end</label>
 								</div>
 								<div class="detail-borrowed-right">
-									<form:input path="dateEnd" name="dateEnd" id="dateEnd" class="form-control" style="display: inline; width: 100%;" disabled="true" />
+									<form:input path="dateEnd" name="dateEnd" id="dateEnd" class="form-control form-text-100" disabled="true" />
 								</div>
 							</div>
 							
-							<div class="col-sm-12" style="padding: 5px"></div>
+							<div class="col-sm-12 common-padding5"></div>
 							<div class="col-sm-6">
 								<div class="detail-borrowed-left">
 									<label>Note</label>
 								</div>
 								<div class="detail-borrowed-right">
-									<form:textarea maxlength="500" path="note" name="note" id="note" class="form-control" style="display: inline; width: 100%;" disabled="true" />
+									<form:textarea maxlength="500" path="note" name="note" id="note" class="form-control form-text-100" disabled="true" />
 								</div>
 							</div>
 							<div class="col-sm-3">
 									<form:radiobutton path="status" name="status" id="active" value="0" disabled="true" />Active
-									<span style="padding-left: 5px;"></span>
+									<span class="common-padding5"></span>
 									<form:radiobutton path="status" name="status" id="inactive" value="1" disabled="true" />Inactive
 							</div>
 							<div class="col-sm-3">
 									<form:radiobutton path="type" name="type" id="private" value="0" disabled="true" />Private
-									<span style="padding-left: 5px;"></span>
+									<span class="common-padding5"></span>
 									<form:radiobutton path="type" name="type" id="public" value="1" disabled="true" />Public
 
 							</div>
@@ -128,11 +148,9 @@
 	<section class="bg_white clearfix manageUser listMember">
 		<div class="body clearfix mt20">
 				<div class="panel panel-default">
-					<div class="panel-heading" style="height: 45px;">
-						<div class="head-left" style="float: left; with: 75%">
+					<div class="panel-heading">
+						<div class="head-left">
 							<h3 class="panel-title">List Member</h3>
-						</div>
-						<div id="divBtnEdit" class="head-right" style="float: right; with: 20%; margin-top: -4px;">
 						</div>
 					</div>
 

@@ -38,12 +38,11 @@ public class GroupServiceImpl extends BaseServiceImpl implements GroupService {
 
 	@Override
 	public boolean createGroup(GroupInfo groupInfo) {
-
 		try {
 			CustomUserDetail userDetail = Helpers.getUserDetail();
 
-			User user = hasOwnGroup(Integer.parseInt(userDetail.getUserId()));
-			if (user != null) {
+			User user = getUserDAO().findById(Integer.parseInt(userDetail.getUserId()), true);
+			if (user != null && user.getIdGroup() == null) {
 
 				groupInfo.setUserCreate(ConvetBeanAndModel.convertUserModelToBean(user));
 				groupInfo.setUserUpdate(Helpers.getUsername());
@@ -66,22 +65,11 @@ public class GroupServiceImpl extends BaseServiceImpl implements GroupService {
 				userDAO.saveOrUpdate(user);
 				return true;
 			}
+			return false;
 		} catch (Exception e) {
 			logger.error("add group", e);
+			throw e;
 		}
-
-		return false;
-	}
-
-	protected User hasOwnGroup(int id) {
-		try {
-			User user = getUserDAO().findById(id, true);
-			if (user != null && user.getIdGroup() == null)
-				return user;
-		} catch (Exception e) {
-			logger.error("isUserExist", e);
-		}
-		return null;
 	}
 
 	@Override
@@ -112,8 +100,8 @@ public class GroupServiceImpl extends BaseServiceImpl implements GroupService {
 			return true;
 		} catch (Exception e) {
 			logger.error("update Group", e);
+			throw e;
 		}
-		return false;
 	}
 
 	@Override
@@ -136,9 +124,8 @@ public class GroupServiceImpl extends BaseServiceImpl implements GroupService {
 			return true;
 		} catch (Exception e) {
 			logger.error("update Group _ Delete logic", e);
+			throw e;
 		}
-
-		return false;
 	}
 
 	private boolean removeUserInGroup(Group group, String userUpdate, Date dateUpdate) {
@@ -168,10 +155,10 @@ public class GroupServiceImpl extends BaseServiceImpl implements GroupService {
 			return true;
 		} catch (Exception e) {
 			logger.error("remove all user in group", e);
+			throw e;
 		}
-		return false;
 	}
-	
+
 	@Override
 	public DataHighChart getDataForHighchart(Integer idGroup) {
 		Group group = getGroupDAO().findById(idGroup, false);
@@ -181,7 +168,7 @@ public class GroupServiceImpl extends BaseServiceImpl implements GroupService {
 
 		List<String> content = new ArrayList<String>();
 		for (Image item : group.getImages()) {
-			if (item == null)
+			if (item == null || Constants.DEL_FLG_DEL.equals(item.getDeleteFlag()))
 				continue;
 			int count = 0;
 			for (Vote vote : item.getVotes()) {
@@ -193,7 +180,6 @@ public class GroupServiceImpl extends BaseServiceImpl implements GroupService {
 		}
 
 		return new DataHighChart(String.valueOf(content.size()), content);
-
 	}
 
 }

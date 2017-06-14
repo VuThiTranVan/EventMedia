@@ -71,6 +71,7 @@ public class ImageDAOImpl extends GenericDAO<Integer, Image> implements ImageDAO
 		crit.add(Restrictions.eq("deleteFlag", Constants.DEL_FLG));
 		crit.createCriteria("group", "group");
 		crit.add(Restrictions.gt("group.id", 0));
+		crit.add(Restrictions.eq("group.deleteFlag", Constants.DEL_FLG));
 		crit.add(Restrictions.eq("group.type", Integer.parseInt(Constants.GROUP_TYPE_CODE_PUBLIC)));
 		if (StringUtils.isNotEmpty(condition)) {
 			crit.add(Restrictions.or(Restrictions.like("title", "%" + condition + "%"),

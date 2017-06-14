@@ -29,12 +29,6 @@ public class UserServiceImpl extends BaseServiceImpl implements UserService {
 	private static final Logger logger = Logger.getLogger(UserServiceImpl.class);
 
 	@Override
-	public List<UserInfo> findAll() {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
 	public UserInfo findById(Integer id, boolean flagUpdate) {
 		try {
 			return ConvetBeanAndModel.convertUserModelToBean(getUserDAO().findById(id, flagUpdate));
@@ -42,12 +36,6 @@ public class UserServiceImpl extends BaseServiceImpl implements UserService {
 			logger.error("Group service _ findById", e);
 			return null;
 		}
-	}
-
-	@Override
-	public boolean editUSer(UserInfo userInfo) {
-		// TODO Auto-generated method stub
-		return false;
 	}
 
 	@Override
@@ -119,8 +107,9 @@ public class UserServiceImpl extends BaseServiceImpl implements UserService {
 			return true;
 		} catch (Exception e) {
 			logger.error("update user", e);
+			throw e;
 		}
-		return false;
+
 	}
 
 	@Override
@@ -141,8 +130,8 @@ public class UserServiceImpl extends BaseServiceImpl implements UserService {
 			return true;
 		} catch (Exception e) {
 			logger.error("remove user", e);
+			throw e;
 		}
-		return false;
 	}
 
 	@Override
@@ -162,7 +151,7 @@ public class UserServiceImpl extends BaseServiceImpl implements UserService {
 			return true;
 		} catch (Exception e) {
 			logger.error("remove user", e);
+			throw e;
 		}
-		return false;
 	}
 }

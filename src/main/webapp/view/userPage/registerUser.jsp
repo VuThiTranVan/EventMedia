@@ -32,57 +32,49 @@
 							<th>Username</th>
 							<td>
 								<form:input path="username" name="username" id="username"
-										class="form-control css-required" placeholder="This is item required"
-										style="display: inline; width: 65%;" />
+										class="form-control css-required" form-text-65 placeholder="This is item required" />
 							</td>
 						</tr>
 						<tr>
 							<th>Password</th>
 
 							<td><form:password path="password" name="password" id="password"
-										class="form-control css-required" placeholder="This is item required"
-										style="display: inline; width: 65%;" />
+										class="form-control css-required form-text-65" placeholder="This is item required" />
 							</td>
 						</tr>
 						<tr>
 							<th>Full name</th>
 
 							<td><form:input path="name" name="name" id="name"
-										class="form-control css-required" placeholder="This is item required"
-										style="display: inline; width: 65%;" />
+										class="form-control css-required form-text-65" placeholder="This is item required" />
 							</td>
 						</tr>
 						<tr>
 							<th>Birthday</th>
-							<td> <form:input
-										path="birthday" name="birthday" id="birthday"
-										class="form-control css-required birthday_picker"
-										placeholder="This is item required"
-										style="display: inline; width: 65%;" />
+							<td> <form:input path="birthday" name="birthday" id="birthday"
+										class="form-control form-text-65 css-required birthday_picker"
+										placeholder="This is item required" />
 							</td>
 						</tr>
 						<tr>
 							<th>Phone number</th>
-							<td><form:input
-										path="phone" name="phone" id="phone"
-										class="form-control css-required"
-										placeholder="This is item required"
-										style="display: inline; width: 65%;" />
+							<td><form:input path="phone" name="phone" id="phone"
+										class="form-control form-text-65 css-required"
+										placeholder="This is item required" />
 							</td>
 						</tr>
 						<tr>
 							<th>Gender</th>
 							<td>
 								<form:radiobutton path="gender" name="gender" value="0" checked="true" /> Male
-								<span style="padding-left: 5px;"></span>
+								<span class="common-padding-left5"></span>
 								<form:radiobutton path="gender" name="gender" value="1" />Fmale
 							</td>
 						</tr>
 						<tr>
 							<th>Email</th>
 							<td><form:input path="email" name="email" id="email"
-									class="form-control css-required" placeholder="This is item required"
-										style="display: inline; width: 65%;" /></td>
+									class="form-control form-text-65 css-required" placeholder="This is item required" /></td>
 						</tr>
 					</table>
 

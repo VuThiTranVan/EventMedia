@@ -1,5 +1,5 @@
 $(function () {
-
+	$('.highcharts-legend').prop('disabled', true);
 	$('#container').highcharts({
 			chart: {
 				type: 'column'

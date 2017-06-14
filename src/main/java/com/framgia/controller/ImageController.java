@@ -1,6 +1,5 @@
 package com.framgia.controller;
 
-import java.text.ParseException;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
@@ -63,8 +62,8 @@ public class ImageController {
 
 		return mv;
 	}
-	
-	@RequestMapping(value = {"/user", "/searchImage"}, method = RequestMethod.GET)
+
+	@RequestMapping(value = { "/user", "/searchImage" }, method = RequestMethod.GET)
 	public ModelAndView initPageUser() {
 		logger.info("Init page image");
 		List<ImageInfo> listImage = imageService.getListImage(null, Constants.NUMBER_PAGE_DEFAULT);
@@ -110,12 +109,7 @@ public class ImageController {
 	@RequestMapping(value = "/user/vote/add/{id}", method = RequestMethod.GET)
 	@ResponseBody
 	public boolean addVote(@PathVariable("id") Integer id) {
-		try {
-			
-			return imageService.addVote(id, Helpers.getIdUser());
-		} catch (ParseException e) {
-			return false;
-		}
+		return imageService.addVote(id, Helpers.getIdUser());
 	}
 
 	@RequestMapping(value = "/user/vote/remove/{id}", method = RequestMethod.GET)

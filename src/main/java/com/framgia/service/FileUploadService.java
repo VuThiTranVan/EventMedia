@@ -1,5 +1,7 @@
 package com.framgia.service;
 
+import java.io.IOException;
+
 import com.framgia.bean.FileFormInfo;
 import com.framgia.bean.ImageInfo;
 

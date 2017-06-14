@@ -103,7 +103,7 @@
 										</c:if>
 								</table>
 								<div class="panel-body-image">
-									<center><img alt="image" src="${image.url}" style="max-width: 100%;" /></center>
+									<center><img alt="image" src="${image.url}"/></center>
 								</div>
 							</div>
 						</div>

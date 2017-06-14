@@ -1,6 +1,5 @@
 package com.framgia.service.impl;
 
-import java.text.ParseException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -50,8 +49,8 @@ public class ImageServiceImpl extends BaseServiceImpl implements ImageService {
 			return true;
 		} catch (Exception e) {
 			logger.error("remove image throw out group error", e);
+			throw e;
 		}
-		return false;
 	}
 
 	@Override
@@ -111,7 +110,7 @@ public class ImageServiceImpl extends BaseServiceImpl implements ImageService {
 	}
 
 	@Override
-	public boolean addVote(Integer idImage, Integer idUser) throws ParseException {
+	public boolean addVote(Integer idImage, Integer idUser) {
 		try {
 			Vote vote = new Vote();
 			Image image = new Image();
@@ -125,7 +124,7 @@ public class ImageServiceImpl extends BaseServiceImpl implements ImageService {
 
 			voteDAO.saveOrUpdate(vote);
 			return true;
-		} catch (ParseException e) {
+		} catch (Exception e) {
 			logger.error("add vote error", e);
 			throw e;
 		}

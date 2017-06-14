@@ -7,7 +7,7 @@
 		<div class="body clearfix mt20">
 
 			<div class="alert alert-success">
-				<p id="err_data" style="color: red">${err_data}</p>
+				<p id="err_data" class="error_red" >${err_data}</p>
 				<div class="alert alert-danger alert-dismissable" id="formAlert">
 					<strong><spring:message code='error' /></strong>
 					<spring:message code='required_fileUpload' />

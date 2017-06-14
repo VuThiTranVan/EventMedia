@@ -119,7 +119,7 @@ function getGroup() {
 					 $(".listMember").hide();
 					if (data.status == 0) {
 						$(".listMember").show();
-		    			$(".listMemberBody").html("<b>No member!</b>");
+		    			$(".listMemberBody").html($("mgsNoMember").text());
 	    			}
 	    		}
 
@@ -127,7 +127,7 @@ function getGroup() {
 	    		if (data.image.length > 0) {
 	    			$(".listImage").show();
 	    		} else {
-	    			$(".listImageBody").html("<b>No image!</b>");
+	    			$(".listImageBody").html($("mgsNoImage").text());
 	    			$(".listImage").show();
 	    		}
 	    		
@@ -265,10 +265,10 @@ function clickBtnSave() {
 $('input[type=radio][name=status]').change(function () {
 	if ($('input[type=radio][name=status]:checked').val() == 1) {
 		$('<div></div>').appendTo('body')
-		.html('<div><h6>You have chosen to close this group.<br>Are you sure?</h6></div>')
+		.html('<div><h6>'+$("#mgsComfirmChangeStatus").text()+'</h6></div>')
 		.dialog({
 		modal: true,
-		title: 'Confirm!!!',
+		title: $("#titleComfirm").text(),
 		zIndex: 10000,
 		autoOpen: true,
 		width: 'auto',
@@ -365,11 +365,11 @@ jQuery.validator.addMethod("isDate",
 	                return false;
 	    }
 	    return true;
-}, '{0} is invalid format date.');
+}, '{0}' + $("#invalidDate").text());
 
 //validate register form
 jQuery.extend(jQuery.validator.messages, {
-	required : "This is item required"
+	required : $("#messageRequired").text()
 });
 
 //Setup form validation on the #update-form element
@@ -512,9 +512,9 @@ function clickRejectUser(id, idGroup, el) {
 				if (data) {
 					
 					// Confirm to send mail: yes/no
-					if (confirm("You want to send a letter to notify users. Yes or No?") == true) {
+					if (confirm($("#comfirmSendMail").text()) == true) {
 						window.location.href="mailto:"+$(el).parents('tr').find("td:eq(2)").text()+
-						 "?subject=Notification: Your request join group have REJECT&body=Dear "+$(el).parents('tr').find("td:eq(1)").text()+",%0D%0A";
+						 "?subject="+$("#comfirmSendMailSubjectReject").text()+"&body=" + $("#comfirmSendMailBody").text()+$(el).parents('tr').find("td:eq(1)").text()+",%0D%0A";
 					}
 
 					// remove datatable
@@ -533,7 +533,6 @@ function clickRejectUser(id, idGroup, el) {
 	}
 }
 
-
 //ACCEPT USER JOIN GROUP
 function clickAcceptUser(id, idGroup, el) {
 	$('#messageContainer').html('');
@@ -546,9 +545,9 @@ function clickAcceptUser(id, idGroup, el) {
 		success : function(data) {
 			if (data) {
 				// Confirm to send mail: yes/no
-				if (confirm("You want to send a letter to notify users. Yes or No?") == true) {
+				if (confirm($("#comfirmSendMail").text()) == true) {
 					window.location.href="mailto:"+$(el).parents('tr').find("td:eq(2)").text()+
-					 "?subject=Notification: Your request join group have accept&body=Dear "+$(el).parents('tr').find("td:eq(1)").text()+",%0D%0A";
+					 "?subject="+ $("#comfirmSendMailSubjectAccept").text() +"&body=" +$("#comfirmSendMailBody").text() +$(el).parents('tr').find("td:eq(1)").text()+",%0D%0A";
 				}
 
 				// change value

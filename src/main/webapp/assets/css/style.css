@@ -71,11 +71,8 @@ abbr, acronym {
 }
 
 sup {
-	vertical-align: baseline
-}
-
-sub {
-	vertical-align: baseline
+	vertical-align: baseline;
+	font-size: medium;
 }
 
 legend {
@@ -432,6 +429,7 @@ header #logo {
 	width: 100%;
 	height: 60px;
 	padding-top: 22px;
+	font-weight: bold;
 }
 
 header #logout {
@@ -1643,7 +1641,6 @@ div.detail-user .detail-user-head-left {
 
 div.detail-user .detail-user-head-right {
 	float: right;
-	float: right;
 	padding-top: 0px;
 	margin: -5px 0px;
 }
@@ -1879,4 +1876,42 @@ button.btnScrUser {
 }
 .highcharts-credits {
 	display: none;
+}
+
+#mdlyLabel {
+	font-weight: bold;
+}
+/* common */
+.common-padding-bottom10 {
+	padding-bottom: 10px;
+}
+
+.common-float-left {
+	float: left;
+}
+
+.common-float-right {
+	float: right;
+}
+
+.common-padding5 {
+	padding: 5;
+}
+
+.common-padding-left5 {
+	padding-left: 5;
+}
+
+.form-text-65 {
+	display: inline;
+	width: 65%;
+}
+
+.form-text-100 {
+	display: inline;
+	width: 100%;
+}
+.noti-green {
+	color: green;
+	font-size: 110%;
 }

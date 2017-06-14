@@ -1,7 +1,6 @@
 package com.framgia.service.impl;
 
 import org.apache.log4j.Logger;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.multipart.MultipartFile;
 
 import com.cloudinary.Cloudinary;
@@ -9,9 +8,6 @@ import com.cloudinary.Transformation;
 import com.framgia.bean.FileFormInfo;
 import com.framgia.bean.GroupInfo;
 import com.framgia.bean.ImageInfo;
-import com.framgia.dao.GroupDAO;
-import com.framgia.dao.ImageDAO;
-import com.framgia.dao.UserDAO;
 import com.framgia.model.Image;
 import com.framgia.service.ManageImageService;
 import com.framgia.util.Constants;
@@ -28,15 +24,6 @@ import com.framgia.util.FileUtil;
 public class ManageImageServiceImpl extends BaseServiceImpl implements ManageImageService {
 
 	private static final Logger logger = Logger.getLogger(ManageImageServiceImpl.class);
-
-	@Autowired
-	ImageDAO imageDAO;
-
-	@Autowired
-	UserDAO userDAO;
-
-	@Autowired
-	GroupDAO groupDAO;
 
 	@Override
 	public ImageInfo findImage(String username) {
@@ -122,7 +109,7 @@ public class ManageImageServiceImpl extends BaseServiceImpl implements ManageIma
 		} catch (Exception e) {
 			logger.error("Error delete logic Image: ", e);
 		}
-		return false;
+		return null;
 	}
 
 }

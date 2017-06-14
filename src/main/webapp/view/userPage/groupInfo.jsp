@@ -18,11 +18,11 @@
 	<section class="bg_white clearfix manageUser infoGroup">
 		<div class="body clearfix mt20">
 			<div class="panel panel-default">
-				<div class="panel-heading" style="height: 45px;">
-					<div class="head-left" style="float: left; with: 75%">
+				<div class="panel-heading">
+					<div class="group-head-left">
 						<h3 class="panel-title">Information group</h3>
 					</div>
-					<div id="divBtnEdit" class="head-right hidden_elem" style="float: right; with: 20%; margin-top: -4px;">
+					<div id="divBtnEdit" class="btnRequestJoin hidden_elem">
 						<input type="button" id="btnRequestJoin" onclick="clickBtnRequestJoin();" value="Request Join Group" class="btn btn-default">
 					</div>
 				</div>
@@ -30,23 +30,23 @@
 					<!-- Group Info -->
 					<div class="form-group form-group-lg">
 						<div class="col-sm-12">
-							<div style="width: 12%; float: left;">
+							<div class="lblGroupLeft">
 								<label>Name</label>
 							</div>
-							<div style="width: 88%; float: left;">
+							<div class="lblGroupRight">
 								<label id="lblName"></label>
 							</div>
 						</div>
-						<div class="col-sm-12" style="padding: 5px"></div>
+						<div class="col-sm-12 common-padding5"></div>
 						<div class="col-sm-12">
-							<div style="width: 12%; float: left;">
+							<div class="lblGroupLeft">
 								<label>Description</label>
 							</div>
-							<div style="width: 88%; float: left;">
+							<div class="lblGroupRight">
 								<label id="lblDescription"></label>
 							</div>
 						</div>
-						<div class="col-sm-12" style="padding: 5px"></div>
+						<div class="col-sm-12 common-padding5"></div>
 						<div class="col-sm-6">
 							<div class="detail-borrowed-left">
 								<label>Date start</label>
@@ -65,7 +65,7 @@
 							</div>
 						</div>
 						
-						<div class="col-sm-12" style="padding: 5px"></div>
+						<div class="col-sm-12 common-padding5"></div>
 						<div class="col-sm-6">
 							<div class="detail-borrowed-left">
 								<label>Note</label>
@@ -76,12 +76,12 @@
 						</div>
 						<div class="col-sm-3">
 							<input type="radio" name="status" value="0" disabled="disabled"> Active
-							<span style="padding-left: 5px;"></span>
+							<span class="common-padding-left5"></span>
 							<input type="radio" name="status" value="1" disabled="disabled"> Active
 						</div>
 						<div class="col-sm-3">
 							<input type="radio" name="type" value="0" disabled="disabled"> Private
-							<span style="padding-left: 5px;"></span>
+							<span class="common-padding-left5"></span>
 							<input type="radio" name="type" value="1" disabled="disabled"> Public
 						</div>
 					</div>
@@ -94,11 +94,9 @@
 	<section class="bg_white clearfix manageUser listMember">
 		<div class="body clearfix mt20">
 				<div class="panel panel-default">
-					<div class="panel-heading" style="height: 45px;">
-						<div class="head-left" style="float: left; with: 75%">
+					<div class="panel-heading">
+						<div class="head-left">
 							<h3 class="panel-title">List Member</h3>
-						</div>
-						<div id="divBtnEdit" class="head-right" style="float: right; with: 20%; margin-top: -4px;">
 						</div>
 					</div>
 

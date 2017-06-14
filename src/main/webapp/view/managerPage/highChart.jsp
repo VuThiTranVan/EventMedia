@@ -12,7 +12,7 @@
 	<c:when test="${not empty highchart}">
 		<section class="pb50">
 			<div id="container" class="body clearfix mt20">
-<pre id="csv" style="display:none">,${highchart.note} images
+<pre id="csv" hidden="true">,${highchart.note} images
 <c:forEach var="data" items="${highchart.content}">
 ${data}
 </c:forEach>

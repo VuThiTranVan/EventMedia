@@ -12,11 +12,11 @@
                     <span>EXTRA PAGES</span>
                 </a>
                 <ul class="sub">
-                    <li><a style="font-size: medium;" href="index">HOME</a></li>
+                    <li><a href="index">HOME</a></li>
                 <c:if test="${!empty pageContext.request.userPrincipal.name}">
-                    <li><a style="font-size: medium;" href="managementGroup">Create group</a></li>
-                    <li><a style="font-size: medium;" href="showbooking">SHOWBOOKING</a></li>
-                    <li><a style="font-size: medium;" href="${pageContext.request.contextPath}/statictical">STATICTICAL</a></li>
+                    <li><a href="managementGroup">CREATE GROUP</a></li>
+                    <li><a href="showbooking">SHOWBOOKING</a></li>
+                    <li><a href="${pageContext.request.contextPath}/statictical">STATICTICAL</a></li>
                 </c:if>
                 </ul>
             </li>

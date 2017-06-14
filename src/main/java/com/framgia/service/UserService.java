@@ -1,22 +1,17 @@
 package com.framgia.service;
 
-import java.util.List;
-
 import com.framgia.bean.UserInfo;
 import com.framgia.security.CustomUserDetail;
 
 public interface UserService extends BaseService {
-	public List<UserInfo> findAll();
 
-	public CustomUserDetail findByUserName(String username);
+	CustomUserDetail findByUserName(String username);
 
-	public UserInfo findById(Integer id, boolean flagUpdate);
+	UserInfo findById(Integer id, boolean flagUpdate);
 
-	public boolean editUSer(UserInfo userInfo);
+	boolean addUser(UserInfo userInfo);
 
-	public boolean addUser(UserInfo userInfo);
-
-	public boolean isUserExist(UserInfo user);
+	boolean isUserExist(UserInfo user);
 
 	boolean updatetUser(UserInfo userInfo);
 

@@ -4,14 +4,10 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.apache.log4j.Logger;
-import org.springframework.beans.factory.annotation.Autowired;
 
 import com.framgia.bean.ConditionGroupBean;
 import com.framgia.bean.GroupInfo;
 import com.framgia.bean.StatisticalInfo;
-import com.framgia.dao.GroupDAO;
-import com.framgia.dao.PermissionDAO;
-import com.framgia.dao.UserDAO;
 import com.framgia.model.Group;
 import com.framgia.service.ManageGroupService;
 import com.framgia.util.Constants;
@@ -26,20 +22,10 @@ import com.framgia.util.Helpers;
  * @author phan.van.hieu@framgia.com
  * 
  */
+@SuppressWarnings("serial")
 public class ManageGroupServiceImpl extends BaseServiceImpl implements ManageGroupService {
 
 	// Log
-	private static final long serialVersionUID = 1L;
-
-	@Autowired
-	PermissionDAO permissionDAO;
-
-	@Autowired
-	UserDAO userDAO;
-
-	@Autowired
-	GroupDAO groupDAO;
-
 	private static final Logger logger = Logger.getLogger(ManageGroupServiceImpl.class);
 
 	@Override
@@ -100,8 +86,8 @@ public class ManageGroupServiceImpl extends BaseServiceImpl implements ManageGro
 
 		} catch (Exception e) {
 			logger.error("Error delete logic User: ", e);
+			throw e;
 		}
-		return false;
 	}
 
 	@Override

@@ -200,6 +200,7 @@
 		</put-list-attribute>
 		<put-list-attribute name="cssAdd">
 			<add-attribute value="/assets/js/calendar/jquery-ui.css" />
+			<add-attribute value="/assets/css/styleGroup.css" />
 		</put-list-attribute>
 	</definition>
 
@@ -275,6 +276,9 @@
 			<add-attribute value="/assets/js/manager/bootstrap.modallery.min.js" />
 			<add-attribute value="/assets/js/user/imageJs.js" />
 		</put-list-attribute>
+		<put-list-attribute name="cssAdd">
+			<add-attribute value="/assets/css/styleHome.css" />
+		</put-list-attribute>
 	</definition>
 
 	<!-- Init user -->
@@ -304,6 +308,9 @@
 			<add-attribute value="/assets/js/calendar/jquery-ui.js" />
 			<add-attribute value="/assets/js/manager/bootstrap.modallery.min.js" />
 			<add-attribute value="/assets/js/user/imageJs.js" />
+		</put-list-attribute>
+		<put-list-attribute name="cssAdd">
+			<add-attribute value="/assets/css/styleHome.css" />
 		</put-list-attribute>
 	</definition>
 
@@ -461,7 +468,6 @@
 			<add-attribute value="/assets/js/dataTables.bootstrap.min.css" />
 			<add-attribute value="/assets/js/jquery.dataTables.min.css" />
 			<add-attribute value="/assets/css/bootstrap.modallery.min.css" />
-
 		</put-list-attribute>
 		<put-list-attribute name="jsDefault">
 			<add-attribute value="/assets/js/jquery.min.js" />
@@ -479,6 +485,7 @@
 		</put-list-attribute>
 		<put-list-attribute name="cssAdd">
 			<add-attribute value="/assets/js/calendar/jquery-ui.css" />
+			<add-attribute value="/assets/css/styleGroup.css" />
 		</put-list-attribute>
 	</definition>
 
