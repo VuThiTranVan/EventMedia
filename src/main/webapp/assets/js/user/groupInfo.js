@@ -1,4 +1,3 @@
-
 function getGroup(id) {
 	$.ajax({
 	    url : "/EventMedia/groupInfo/"+id,
@@ -7,6 +6,7 @@ function getGroup(id) {
 	    dataType : 'json',
 	    async : true,
 	    success : function(data, textStatus, jqXHR) {
+
     		// display section group info
     		$(".infoGroup").show();
 
@@ -25,7 +25,7 @@ function getGroup(id) {
 	    		if ($.fn.DataTable.isDataTable('#dataTables-result')) {
 	                $('#dataTables-result').DataTable().destroy();
 	            }
-
+	    		var flgJoin = false;
                 $('#dataTables-result').DataTable({
                     "bProcessing" : true,
                     "aaData" : data.user,
@@ -36,6 +36,11 @@ function getGroup(id) {
                     	{
                             "mDataProp" : "username",
                             "mRender" : function(data, type, row) {
+
+                    	    	if ($(".lblusername").text() == row.username) {
+                    	    		flgJoin = true;
+                    	    	}
+                    	    	
                                 return "<a target='_blank' href='/EventMedia/manager/user/" + row.id + "'>"
                                         + data+"</a>";
                             },
@@ -46,12 +51,17 @@ function getGroup(id) {
                         }],
                     responsive : true
                 });
+                
+                if (!flgJoin) {
+        	    	$(".btnRequestJoin").removeClass('hidden_elem');
+        	    	$(".lblIdGroup").text(data.id);
+                }
                 $(".listMember").show();
 			} else {
 				 $(".listMember").hide();
 				if (data.status == 0) {
 					$(".listMember").show();
-	    			$(".listMemberBody").html("<b>No member!</b>");
+					$(".listMemberBody").html($("mgsNoMember").text());
     			}
     		}
 
@@ -59,7 +69,7 @@ function getGroup(id) {
     		if (data.image.length > 0) {
     			$(".listImage").show();
     		} else {
-    			$(".listImageBody").html("<b>No image!</b>");
+    			$(".listImageBody").html($("mgsNoImage").text());
     			$(".listImage").show();
     		}
     		
@@ -102,5 +112,28 @@ function getGroup(id) {
 	    error : function(jqXHR, textStatus, errorThrown) {
 	    	$("#messageContainer").removeClass('hidden_elem');
 	    }
+	});
+}
+
+function clickBtnRequestJoin() {
+	var formURL = "/EventMedia/groupInfo/" + $(".lblIdGroup").text()+ "/request";
+	$.ajax({
+		url : formURL,
+		type : "GET",
+		data : false,
+		dataType : 'json',
+		success : function(data) {
+			if (data) {
+				$(".btnRequestJoin").addClass('hidden_elem');
+				// Message
+				$('#mgsRequestJoin').html($("#requestJoinSuccess").text());
+			}
+			else {
+				$('#mgsRequestJoin').html($("#requestJoinError").text());
+			}
+		},
+		error : function(error) {
+			$('#mgsRequestJoin').html($("#requestJoinError").text());
+		}
 	});
 }

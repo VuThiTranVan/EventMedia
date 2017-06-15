@@ -8,7 +8,19 @@
  * 26/05/2017
  -->
 <body onload='getGroup(${idGroup});'>
-	
+	<label id="mgsNoMember" class="hidden_elem">
+		<spring:message code='manager-mgs-no-member' text='' /></label>
+	<label id="mgsNoImage" class="hidden_elem">
+		<spring:message code='manager-mgs-no-image' text='' /></label>
+	<label id="requestJoinError" class="hidden_elem">
+		<spring:message code='message-request-join-group-error' text='' /></label>
+	<label id="requestJoinSuccess" class="hidden_elem">
+		<spring:message code='message-request-join-group-success' text='' /></label>
+
+	<section class="bg_white clearfix messageError">
+		<div class="body clearfix mt20" id="mgsRequestJoin">
+		</div>
+	</section>
 
 	<section class="bg_white clearfix messageError">
 		<div class="body clearfix mt20 hidden_elem" id="messageContainer">
@@ -22,9 +34,13 @@
 					<div class="group-head-left">
 						<h3 class="panel-title">Information group</h3>
 					</div>
-					<div id="divBtnEdit" class="btnRequestJoin hidden_elem">
-						<input type="button" id="btnRequestJoin" onclick="clickBtnRequestJoin();" value="Request Join Group" class="btn btn-default">
-					</div>
+					<c:if test="${not empty pageContext.request.userPrincipal.name}">
+						<div class="btnRequestJoin hidden_elem">
+							<label class="lblusername hidden_elem">${pageContext.request.userPrincipal.name}</label>
+							<label class="lblIdGroup hidden_elem"></label>
+							<input type="button" onclick="clickBtnRequestJoin();" value="Request Join Group" class="btn btn-default">
+						</div>
+					</c:if>
 				</div>
 				<div class="panel-body">
 					<!-- Group Info -->

@@ -9,6 +9,7 @@ import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 
 import com.framgia.bean.UserInfo;
+import com.framgia.model.Group;
 import com.framgia.model.User;
 import com.framgia.security.CustomUserDetail;
 import com.framgia.service.UserService;
@@ -151,6 +152,31 @@ public class UserServiceImpl extends BaseServiceImpl implements UserService {
 			return true;
 		} catch (Exception e) {
 			logger.error("remove user", e);
+			throw e;
+		}
+	}
+
+	@Override
+	public boolean requestUserJoinGroup(Integer idGroup, Integer idUser) {
+		try {
+			Group group = groupDAO.findById(idGroup, false);
+			if (group == null) {
+				return false;
+			} else if (Constants.GROUP_TYPE_CODE_PRIVATE.equals(group.getType()) || 
+					Constants.DEL_FLG_DEL.equals(group.getDeleteFlag())){
+				return false;
+			}
+			User user = userDAO.findById(idUser, true);
+
+			user.setStatusJoin(Constants.STATUSJOIN_CODE_REQUEST);
+			user.setIdGroup(idGroup);
+			user.setDateUpdate(DateUtil.getDateNow());
+			user.setUserUpdate(user.getUsername());
+			
+			userDAO.saveOrUpdate(user);
+			return true;
+		} catch (Exception e) {
+			logger.error("user request to join this group", e);
 			throw e;
 		}
 	}

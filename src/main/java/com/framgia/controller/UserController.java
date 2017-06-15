@@ -26,6 +26,7 @@ import com.framgia.service.GroupService;
 import com.framgia.service.UserService;
 import com.framgia.util.Constants;
 import com.framgia.util.DateUtil;
+import com.framgia.util.Helpers;
 
 /**
  * 
@@ -114,5 +115,10 @@ public class UserController {
 	@RequestMapping(value = { "/groupInfo/{id}" }, method = RequestMethod.POST)
 	public @ResponseBody GroupInfo infoGroup(@PathVariable("id") Integer id) {
 		return groupService.findById(id, false);
+	}
+
+	@RequestMapping(value = { "/groupInfo/{id}/request" }, method = RequestMethod.GET)
+	public @ResponseBody boolean requestJoinGroup(@PathVariable("id") Integer id) {
+		return userService.requestUserJoinGroup(id, Helpers.getIdUser());
 	}
 }
